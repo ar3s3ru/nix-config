@@ -1,0 +1,46 @@
+{ config, lib, pkgs, inputs, ... }:
+
+{
+  home.username = "ar3s3ru";
+  home.stateVersion = "22.05";
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnsupportedSystem = true;
+    allowBroken = true;
+
+    # FIXME: fish-completions is pulling in Python 2.7
+    # but it breaks the build.
+    permittedInsecurePackages = [
+      "python-2.7.18.6"
+    ];
+  };
+
+
+
+  imports = [
+    inputs.nix-colors.homeManagerModule
+    ../../modules/nvim
+    ../../modules/programming
+    ../../modules/alacritty.nix
+    ../../modules/fish.nix
+    ../../modules/git.nix
+    ../../modules/ssh.nix
+  ];
+
+  programs = {
+    home-manager.enable = true;
+    gpg.enable = true;
+  };
+
+  home.packages = with pkgs; [
+    jq
+    yq-go
+    mpv
+    neofetch
+    hugo # For my website.
+    grpcurl
+    # LaTeX and TexLive
+    texlive.combined.scheme-basic
+  ];
+}

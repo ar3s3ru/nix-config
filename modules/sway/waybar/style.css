@@ -1,0 +1,92 @@
+@import "colors.css";
+
+* {
+	font-size: 10px;
+	font-family: "Terminus";
+}
+
+window#waybar {
+	background: @base00;
+	color: @base06;
+}
+
+#custom-right-arrow-dark,
+#custom-left-arrow-dark {
+	color: @base01;
+}
+
+#custom-right-arrow-light,
+#custom-left-arrow-light {
+	color: @base00;
+	background: @base01;
+}
+
+#workspaces,
+#custom-spotify,
+#temperature,
+#clock.1,
+#clock.2,
+#clock.3,
+#pulseaudio,
+#memory,
+#network,
+#cpu,
+#battery,
+#disk,
+#tray {
+	background: @base01;
+}
+
+#workspaces button {
+	padding: 0 2px;
+	color: @base06;
+}
+
+#workspaces button.focused {
+	color: @base0D;
+}
+
+#workspaces button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+
+#workspaces button:hover {
+	background: @base01;
+	border: @base01;
+	padding: 0 3px;
+}
+
+#pulseaudio {
+	color: @base0D;
+}
+
+#memory {
+	color: @base0C;
+}
+
+#cpu {
+	color: @base0E;
+}
+
+#battery {
+	color: @base0B;
+}
+
+#disk {
+	color: @base09;
+}
+
+#clock,
+#custom-hf-week,
+#custom-hellofresh-vpn,
+#custom-spotify,
+#temperature,
+#pulseaudio,
+#memory,
+#network,
+#cpu,
+#battery,
+#disk {
+	padding: 0 10px;
+}

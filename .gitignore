@@ -1,0 +1,4 @@
+.DS_Store
+
+# Necessary for the products of nix-darwin.
+/result
