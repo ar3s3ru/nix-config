@@ -14,9 +14,12 @@
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixos-hardware, home-manager, nix-colors, darwin, nur, ... }@inputs:
+  outputs = { nixpkgs, nixos-hardware, home-manager, nix-colors, darwin, nur, disko, ... }@inputs:
     let
       stateVersion = "22.05";
 
@@ -45,20 +48,21 @@
           system = "x86_64-linux";
           modules = [
             ./machines/momonoke/configuration.nix
+            disko.nixosModules.disko
             nixos-hardware.nixosModules.lenovo-thinkpad-x270
-            home-manager.nixosModules.home-manager
-            (homeManagerConfig // {
-              home-manager.users.ar3s3ru = import ./users/ar3s3ru/momonoke.nix;
-              home-manager.extraSpecialArgs = (extraSpecialArgs // {
-                wallpaper = ./wallpapers/majelletta.jpg;
+            # home-manager.nixosModules.home-manager
+            # (homeManagerConfig // {
+            #   home-manager.users.ar3s3ru = import ./users/ar3s3ru/momonoke.nix;
+            #   home-manager.extraSpecialArgs = (extraSpecialArgs // {
+            #     wallpaper = ./wallpapers/majelletta.jpg;
 
-                # SSH configuration for user.
-                ssh = {
-                  private-key = ./machines/momonoke/secrets/id_ed25519;
-                  public-key = ./machines/momonoke/id_ed25519.pub;
-                };
-              });
-            })
+            #     # SSH configuration for user.
+            #     ssh = {
+            #       private-key = ./machines/momonoke/secrets/id_ed25519;
+            #       public-key = ./machines/momonoke/id_ed25519.pub;
+            #     };
+            #   });
+            # })
           ];
         };
       };

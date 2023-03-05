@@ -14,26 +14,98 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/8979c23e-0c29-475c-bdf4-3f1bc1ca665b";
-      fsType = "btrfs";
+  disko.devices = {
+    disk.sda = {
+      type = "disk";
+      device = "/dev/sda";
+      content = {
+        type = "table";
+        format = "gpt";
+        partitions = [
+          {
+            type = "partition";
+            name = "ESP";
+            start = "1MiB";
+            end = "256MiB";
+            bootable = true;
+            content = {
+              type = "filesystem";
+              format = "vfat";
+              mountpoint = "/boot";
+            };
+          }
+          {
+            type = "partition";
+            name = "luks";
+            start = "256MiB";
+            end = "100%";
+            content = {
+              type = "luks";
+              name = "cryptroot";
+              keyFile = ./secrets/cryptroot.key;
+              content = {
+                type = "lvm_pv";
+                vg = "nixos";
+              };
+            };
+          }
+        ];
+      };
     };
 
-  fileSystems."/home" =
-    {
-      device = "/dev/disk/by-uuid/db332e9e-e5cb-4903-bf8e-73e8ca2ad9bf";
-      fsType = "ext4";
+    lvm_vg.nixos = {
+      type = "lvm_vg";
+      lvs = {
+        root = {
+          type = "lvm_lv";
+          size = "5G";
+          content = {
+            type = "filesystem";
+            format = "ext4";
+            mountpoint = "/";
+          };
+        };
+        swap = {
+          type = "lvm_lv";
+          size = "8G";
+          content = {
+            type = "swap";
+            randomEncryption = true;
+          };
+        };
+        var = {
+          type = "lvm_lv";
+          size = "30G";
+          content = {
+            type = "filesystem";
+            format = "ext4";
+            mountpoint = "/var";
+          };
+        };
+        nix = {
+          type = "lvm_lv";
+          size = "150G";
+          content = {
+            type = "filesystem";
+            format = "ext4";
+            mountpoint = "/nix";
+          };
+        };
+        home = {
+          type = "lvm_lv";
+          size = "+100%FREE";
+          content = {
+            type = "filesystem";
+            format = "btrfs";
+            mountpoint = "/home";
+          };
+        };
+      };
     };
-
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/F355-785D";
-      fsType = "vfat";
-    };
+  };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/448cffcf-3e7f-4575-b078-127dc1e961c5"; }];
+    [{ device = "/dev/mapper/nixos-swap"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
