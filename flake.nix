@@ -54,8 +54,8 @@
 
                 # SSH configuration for user.
                 ssh = {
-                  private-key = ./machines/momonoke/secrets/ssh/id_ed25519;
-                  public-key = ./machines/momonoke/secrets/ssh/id_ed25519.pub;
+                  private-key = ./machines/momonoke/secrets/id_ed25519;
+                  public-key = ./machines/momonoke/id_ed25519.pub;
                 };
               });
             })
@@ -77,8 +77,8 @@
 
                 # SSH configuration for user.
                 ssh = {
-                  private-key = ./machines/P5XVK45RQP/secrets/ssh/id_ed25519;
-                  public-key = ./machines/P5XVK45RQP/secrets/ssh/id_ed25519.pub;
+                  private-key = ./machines/P5XVK45RQP/secrets/id_ed25519;
+                  public-key = ./machines/P5XVK45RQP/id_ed25519.pub;
                 };
               });
             })

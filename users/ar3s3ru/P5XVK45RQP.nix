@@ -14,5 +14,5 @@
   };
 
   # Using manual config for gh, programs.gh does not really support auth in a nice way.
-  xdg.configFile."gh/hosts.yml".source = ../../machines/P5XVK45RQP/secrets/github/gh_hosts.yml;
+  xdg.configFile."gh/hosts.yml".source = ../../machines/P5XVK45RQP/secrets/gh_hosts.yml;
 }
