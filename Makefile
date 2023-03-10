@@ -19,11 +19,11 @@ bootstrap/copy:
 		$(MAKEFILE_DIR)/ nixos@${addr}:~/nix-config
 
 bootstrap/system:
-	$(MAKE) bootstrap/copy
-	ssh $(SSH_OPTIONS) -p 22 nixos@${addr} " \
-		cd ~/nix-config && \
-		nix-env -iA nixos.gnumake && \
-		make system host=${host}"
+	nix run github:numtide/nixos-anywhere -- \
+		nixos@${addr} \
+		--flake ".#${host}" \
+		--debug \
+		--disk-encryption-keys /tmp/cryptroot.key ./machines/${host}/secrets/cryptroot.key
 
 # Local run --------------------------------------------
 

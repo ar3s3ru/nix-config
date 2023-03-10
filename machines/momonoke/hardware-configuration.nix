@@ -42,7 +42,7 @@
             content = {
               type = "luks";
               name = "cryptroot";
-              keyFile = ./secrets/cryptroot.key;
+              keyFile = "/tmp/cryptroot.key";
               content = {
                 type = "lvm_pv";
                 vg = "nixos";
