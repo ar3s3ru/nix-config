@@ -84,7 +84,7 @@
         };
         nix = {
           type = "lvm_lv";
-          size = "150G";
+          size = "200G";
           content = {
             type = "filesystem";
             format = "ext4";
@@ -93,10 +93,10 @@
         };
         home = {
           type = "lvm_lv";
-          size = "+100%FREE";
+          size = "157G";
           content = {
             type = "filesystem";
-            format = "btrfs";
+            format = "ext4";
             mountpoint = "/home";
           };
         };

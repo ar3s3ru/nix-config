@@ -7,6 +7,9 @@ MAKEFILE_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 
 export NIXPKGS_ALLOW_UNFREE = 1
 
+NIX_FLAGS := --extra-experimental-features nix-command --extra-experimental-features flakes
+NIX       := nix $(NIX_FLAGS)
+
 # System bootstrap -------------------------------------
 SSH_OPTIONS=-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
@@ -15,11 +18,10 @@ bootstrap/copy:
 	rsync -av -e 'ssh $(SSH_OPTIONS) -p 22' \
 		--exclude='.git/' \
 		--exclude='.git-crypt/' \
-		--rsync-path="sudo rsync" \
-		$(MAKEFILE_DIR)/ nixos@${addr}:~/nix-config
+		$(MAKEFILE_DIR)/ ${or $(user), nixos}@${addr}:~/nix-config
 
 bootstrap/system:
-	nix run github:numtide/nixos-anywhere -- \
+	$(NIX) run github:numtide/nixos-anywhere -- \
 		nixos@${addr} \
 		--flake ".#${host}" \
 		--debug \
@@ -36,9 +38,7 @@ momonoke:
 # MacOS configuration stuff ----------------------------
 
 P5XVK45RQP:
-	nix --extra-experimental-features nix-command \
-		--extra-experimental-features flakes \
-		build .#darwinConfigurations.P5XVK45RQP.system
+	$(NIX) build .#darwinConfigurations.P5XVK45RQP.system
 	echo "switching to new version..."
 	./result/sw/bin/darwin-rebuild switch --flake .
 	echo "all done!"
