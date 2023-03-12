@@ -14,6 +14,7 @@ in
       ${yabai} -m signal --add event=dock_did_restart action="sudo ${yabai} --load-sa"
 
       ${yabai} -m config layout bsp
+      ${yabai} -m config window_placement second_child
       ${yabai} -m config auto_balance off
       ${yabai} -m config split_ratio 0.5
       ${yabai} -m config window_topmost on
@@ -61,6 +62,10 @@ in
 
         # terminal
         default < ${mod} - return : ${pkgs.alacritty}/bin/alacritty
+
+        # split mode
+        default < ${mod} - b : ${yabai} -m config split_type horizontal
+        default < ${mod} - v : ${yabai} -m config split_type vertical
 
         # focus window
         default < ${mod} - ${left} : ${yabai} -m window --focus west
