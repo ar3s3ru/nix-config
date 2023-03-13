@@ -1,7 +1,7 @@
 { config, pkgs, colorscheme, ... }:
 
 {
-  programs.mako = with colorscheme.colors; {
+  services.mako = with colorscheme.colors; {
     enable = true;
 
     font = "Terminus 10";
