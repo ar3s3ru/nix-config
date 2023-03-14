@@ -55,6 +55,15 @@ let
       sha256 = "djo1m0myIpEqz/jGyaUS2OROGnafY7YOI5T1sEneIK8=";
     };
   };
+
+  kddejong.vscode-cfn-lint = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      publisher = "kddejong";
+      name = "vscode-cfn-lint";
+      version = "0.24.3";
+      sha256 = "2XpvjY1W0u9FCKhn2e2vPSsBk5pveqlmWCeqlUOlz3I=";
+    };
+  };
 in
 {
   # NOTE: many of the required packages here are acutally installed already in nvim module.
@@ -110,6 +119,28 @@ in
       # Configuration from ./machines/default.nix
       "plantuml.server" = "http://127.0.0.1:10808";
       "plantuml.render" = "PlantUMLServer";
+
+      # These are for CloudFormation.
+      "yaml.customTags" = [
+        "!And"
+        "!If"
+        "!Not"
+        "!Equals"
+        "!Or"
+        "!FindInMap sequence"
+        "!Base64"
+        "!Cidr"
+        "!Ref"
+        "!Sub"
+        "!GetAtt"
+        "!GetAZs"
+        "!ImportValue"
+        "!Select"
+        "!Select sequence"
+        "!Split"
+        "!Join sequence"
+      ];
+      "yaml.format.enable" = true;
     };
 
     extensions = with pkgs.vscode-extensions; [
@@ -132,6 +163,7 @@ in
       dlasagno.rasi
       jebbs.plantuml
       fwcd.kotlin
+      kddejong.vscode-cfn-lint
     ];
   };
 }
