@@ -64,6 +64,15 @@ let
       sha256 = "2XpvjY1W0u9FCKhn2e2vPSsBk5pveqlmWCeqlUOlz3I=";
     };
   };
+
+  editorconfig.edi = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      publisher = "editorconfig";
+      name = "edi";
+      version = "0.16.4";
+      sha256 = "";
+    };
+  };
 in
 {
   # NOTE: many of the required packages here are acutally installed already in nvim module.
