@@ -16,16 +16,14 @@
     ];
   };
 
-
-
   imports = [
     inputs.nix-colors.homeManagerModule
-    ../../modules/nvim
-    ../../modules/programming
-    ../../modules/alacritty.nix
-    ../../modules/fish.nix
-    ../../modules/git.nix
-    ../../modules/ssh.nix
+    ./modules/nvim
+    ./modules/programming
+    ./modules/alacritty.nix
+    ./modules/fish.nix
+    ./modules/git.nix
+    ./modules/ssh.nix
   ];
 
   programs = {

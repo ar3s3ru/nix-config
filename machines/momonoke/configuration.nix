@@ -3,9 +3,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../shared.nix
-    ../linux.nix
-    ../physical.nix
+    ../modules/shared.nix
+    ../modules/linux.nix
+    ../modules/physical.nix
   ];
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.

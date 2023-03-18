@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../shared.nix
-    ../../modules/homebrew.nix
+    ../modules/shared.nix
+    ../modules/homebrew.nix
   ];
 
   system.stateVersion = 4;

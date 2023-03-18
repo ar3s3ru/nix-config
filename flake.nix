@@ -52,7 +52,7 @@
             nixos-hardware.nixosModules.lenovo-thinkpad-x270
             home-manager.nixosModules.home-manager
             (homeManagerConfig // {
-              home-manager.users.ar3s3ru = import ./users/ar3s3ru/momonoke.nix;
+              home-manager.users.ar3s3ru = import ./home/ar3s3ru-momonoke.nix;
               home-manager.extraSpecialArgs = (extraSpecialArgs // {
                 wallpaper = ./wallpapers/majelletta.jpg;
 
@@ -75,7 +75,7 @@
             ./machines/P5XVK45RQP/configuration.nix
             home-manager.darwinModules.home-manager
             (homeManagerConfig // {
-              home-manager.users.ar3s3ru = import ./users/ar3s3ru/P5XVK45RQP.nix;
+              home-manager.users.ar3s3ru = import ./home/ar3s3ru-P5XVK45RQP.nix;
               home-manager.extraSpecialArgs = (extraSpecialArgs // {
                 colorscheme = nix-colors.colorSchemes.monokai;
 

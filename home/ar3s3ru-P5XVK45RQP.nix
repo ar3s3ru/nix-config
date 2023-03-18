@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ./default.nix
-    ../../modules/chronomics.nix
-    ../../modules/yabai.nix
-    ../../modules/gpg-darwin.nix
-    ../../modules/vscode.nix
+    ./ar3s3ru.nix
+    ./modules/chronomics.nix
+    ./modules/yabai.nix
+    ./modules/gpg-darwin.nix
+    ./modules/vscode.nix
   ];
 
   programs.alacritty.settings.font = {
@@ -20,5 +20,5 @@
   };
 
   # Using manual config for gh, programs.gh does not really support auth in a nice way.
-  xdg.configFile."gh/hosts.yml".source = ../../machines/P5XVK45RQP/secrets/gh_hosts.yml;
+  xdg.configFile."gh/hosts.yml".source = ../machines/P5XVK45RQP/secrets/gh_hosts.yml;
 }
