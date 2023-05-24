@@ -1,24 +1,24 @@
 @import "colors.css";
 
 * {
-	font-size: 10px;
-	font-family: "Terminus";
+  font-size: 12px;
+  font-family: "MesloLGS NF";
 }
 
 window#waybar {
-	background: @base00;
-	color: @base06;
+  background: @base00;
+  color: @base06;
 }
 
 #custom-right-arrow-dark,
 #custom-left-arrow-dark {
-	color: @base01;
+  color: @base01;
 }
 
 #custom-right-arrow-light,
 #custom-left-arrow-light {
-	color: @base00;
-	background: @base01;
+  color: @base00;
+  background: @base01;
 }
 
 #workspaces,
@@ -34,47 +34,47 @@ window#waybar {
 #battery,
 #disk,
 #tray {
-	background: @base01;
+  background: @base01;
 }
 
 #workspaces button {
-	padding: 0 2px;
-	color: @base06;
+  padding: 0 2px;
+  color: @base06;
 }
 
 #workspaces button.focused {
-	color: @base0D;
+  color: @base0D;
 }
 
 #workspaces button:hover {
-	box-shadow: inherit;
-	text-shadow: inherit;
+  box-shadow: inherit;
+  text-shadow: inherit;
 }
 
 #workspaces button:hover {
-	background: @base01;
-	border: @base01;
-	padding: 0 3px;
+  background: @base01;
+  border: @base01;
+  padding: 0 3px;
 }
 
 #pulseaudio {
-	color: @base0D;
+  color: @base0D;
 }
 
 #memory {
-	color: @base0C;
+  color: @base0C;
 }
 
 #cpu {
-	color: @base0E;
+  color: @base0E;
 }
 
 #battery {
-	color: @base0B;
+  color: @base0B;
 }
 
 #disk {
-	color: @base09;
+  color: @base09;
 }
 
 #clock,
@@ -88,5 +88,5 @@ window#waybar {
 #cpu,
 #battery,
 #disk {
-	padding: 0 10px;
+  padding: 0 10px;
 }

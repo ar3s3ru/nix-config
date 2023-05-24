@@ -4,7 +4,7 @@
   services.mako = with colorscheme.colors; {
     enable = true;
 
-    font = "Terminus 10";
+    font = "MesloLGS NF 10";
     maxIconSize = 32;
     padding = "10,20";
     defaultTimeout = 8000;

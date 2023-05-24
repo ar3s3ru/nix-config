@@ -3,7 +3,7 @@ let
   # To write strings in the configuration without double quotes.
   inherit (config.lib.formats.rasi) mkLiteral;
 
-  font = "Terminus 10";
+  font = "MesloLGS NF 10";
 in
 {
   programs.rofi = {

@@ -19,11 +19,22 @@
     ./modules/vscode.nix
   ];
 
+  programs.alacritty.settings.font = {
+    size = 10;
+    normal.family = "MesloLGS NF";
+  };
+
+  programs.vscode.userSettings = {
+    "editor.fontFamily" = lib.mkForce "'MesloLGS NF'";
+    "editor.fontSize" = 14;
+  };
+
   # Using manual config for gh, programs.gh does not really support auth in a nice way.
   xdg.configFile."gh/hosts.yml".source = ../machines/momonoke/secrets/gh_hosts.yml;
 
   home.packages = with pkgs; [
-    tdesktop # Telegrm desktop app.:way
+    tdesktop # Telegrm desktop app.
+    imagemagick
   ];
 
   # Enable mpv hardware acceleration.

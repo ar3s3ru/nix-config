@@ -4,10 +4,12 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    # nerdfonts
+    meslo-lgs-nf
+
     # noto-fonts
     # noto-fonts-cjk
     # noto-fonts-emoji
+
     terminus-nerdfont
     terminus_font
     terminus_font_ttf
