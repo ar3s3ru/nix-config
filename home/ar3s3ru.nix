@@ -40,5 +40,7 @@
     grpcurl
     # LaTeX and TexLive
     texlive.combined.scheme-basic
+    yt-dlp
+    signal-desktop
   ];
 }
