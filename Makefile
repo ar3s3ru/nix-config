@@ -34,11 +34,3 @@ system:
 
 momonoke:
 	$(MAKE) system host=momonoke
-
-# MacOS configuration stuff ----------------------------
-
-P5XVK45RQP:
-	$(NIX) build .#darwinConfigurations.P5XVK45RQP.system
-	echo "switching to new version..."
-	./result/sw/bin/darwin-rebuild switch --flake .
-	echo "all done!"

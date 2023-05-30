@@ -66,28 +66,5 @@
           ];
         };
       };
-
-      darwinConfigurations = {
-        P5XVK45RQP = darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          inputs = { inherit darwin nixpkgsConfig; };
-          modules = [
-            ./machines/P5XVK45RQP/configuration.nix
-            home-manager.darwinModules.home-manager
-            (homeManagerConfig // {
-              home-manager.users.ar3s3ru = import ./home/ar3s3ru-P5XVK45RQP.nix;
-              home-manager.extraSpecialArgs = (extraSpecialArgs // {
-                colorscheme = nix-colors.colorSchemes.monokai;
-
-                # SSH configuration for user.
-                ssh = {
-                  private-key = ./machines/P5XVK45RQP/secrets/id_ed25519;
-                  public-key = ./machines/P5XVK45RQP/id_ed25519.pub;
-                };
-              });
-            })
-          ];
-        };
-      };
     };
 }
