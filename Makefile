@@ -30,7 +30,10 @@ bootstrap/system:
 # Local run --------------------------------------------
 
 system:
-	sudo nixos-rebuild switch --flake .#$(host) --show-trace
+	sudo nixos-rebuild switch --flake .#$(host) --show-trace $(flags)
 
 momonoke:
 	$(MAKE) system host=momonoke
+
+teriyaki:
+	$(MAKE) system host=teriyaki flags=--impure

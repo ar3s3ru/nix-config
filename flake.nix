@@ -17,11 +17,14 @@
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
+    nixos-apple-silicon.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixos-hardware, home-manager, nix-colors, darwin, nur, disko, ... }@inputs:
+  outputs = { nixpkgs, nixos-hardware, home-manager, nix-colors, darwin, nur, disko, nixos-apple-silicon, ... }@inputs:
     let
-      stateVersion = "22.05";
+      stateVersion = "23.05";
 
       nixpkgsConfig = import nixpkgs {
         config.allowUnfree = true;
@@ -61,6 +64,23 @@
                   private-key = ./machines/momonoke/secrets/id_ed25519;
                   public-key = ./machines/momonoke/id_ed25519.pub;
                 };
+              });
+            })
+          ];
+        };
+
+        teriyaki = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./machines/teriyaki/configuration.nix
+            nixos-apple-silicon.nixosModules.apple-silicon-support
+            home-manager.nixosModules.home-manager
+            (homeManagerConfig // {
+              home-manager.users.ar3s3ru = import ./home/ar3s3ru-teriyaki.nix;
+              home-manager.extraSpecialArgs = (extraSpecialArgs // {
+                wallpaper = ./wallpapers/majelletta.jpg;
+                ssh.private-key = ./machines/teriyaki/secrets/id_ed25519;
+                ssh.public-key = ./machines/teriyaki/id_ed25519.pub;
               });
             })
           ];

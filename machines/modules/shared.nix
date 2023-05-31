@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  system.stateVersion = lib.mkDefault "22.05";
+  system.stateVersion = lib.mkDefault "23.05";
   nixpkgs.config.allowUnfree = true;
 
   nix = {

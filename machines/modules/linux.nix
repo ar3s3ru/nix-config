@@ -3,11 +3,11 @@
 {
   boot = {
     # Use the latest Linux kernel version cause YOLO!
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
 
     # Use the systemd-boot EFI boot loader.
     loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader.efi.canTouchEfiVariables = lib.mkDefault true;
 
     # Limit the number of available generations on the bootloader
     # to the latest 3.

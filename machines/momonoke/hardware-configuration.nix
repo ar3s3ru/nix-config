@@ -23,7 +23,6 @@
         format = "gpt";
         partitions = [
           {
-            type = "partition";
             name = "ESP";
             start = "1MiB";
             end = "256MiB";
@@ -35,7 +34,6 @@
             };
           }
           {
-            type = "partition";
             name = "luks";
             start = "256MiB";
             end = "100%";
@@ -57,7 +55,6 @@
       type = "lvm_vg";
       lvs = {
         root = {
-          type = "lvm_lv";
           size = "5G";
           content = {
             type = "filesystem";
@@ -66,14 +63,12 @@
           };
         };
         swap = {
-          type = "lvm_lv";
           size = "8G";
           content = {
             type = "swap";
           };
         };
         var = {
-          type = "lvm_lv";
           size = "30G";
           content = {
             type = "filesystem";
@@ -82,7 +77,6 @@
           };
         };
         nix = {
-          type = "lvm_lv";
           size = "200G";
           content = {
             type = "filesystem";
@@ -91,7 +85,6 @@
           };
         };
         home = {
-          type = "lvm_lv";
           size = "157G";
           content = {
             type = "filesystem";
