@@ -9,14 +9,14 @@
   ];
 
   imports = [
-    ./ar3s3ru.nix
-    ./modules/sway
-    ./modules/firefox.nix
-    ./modules/gtk.nix
-    ./modules/gpg-linux.nix
-    ./modules/fonts.nix
-    ./modules/slack.nix
-    ./modules/vscode.nix
+    ./default.nix
+    ../modules/sway
+    ../modules/firefox.nix
+    ../modules/gtk.nix
+    ../modules/gpg-linux.nix
+    ../modules/fonts.nix
+    ../modules/slack.nix
+    ../modules/vscode.nix
   ];
 
   programs.alacritty.settings.font = {
@@ -30,7 +30,7 @@
   };
 
   # Using manual config for gh, programs.gh does not really support auth in a nice way.
-  xdg.configFile."gh/hosts.yml".source = ../machines/momonoke/secrets/gh_hosts.yml;
+  xdg.configFile."gh/hosts.yml".source = ../../machines/momonoke/secrets/gh_hosts.yml;
 
   home.packages = with pkgs; [
     tdesktop # Telegrm desktop app.

@@ -9,13 +9,20 @@
   ];
 
   imports = [
-    ./ar3s3ru.nix
-    ./modules/sway
-    ./modules/firefox.nix
-    ./modules/gtk.nix
-    ./modules/gpg-linux.nix
-    ./modules/fonts.nix
-    ./modules/vscode.nix
+    ./default.nix
+    ../modules/sway
+    ../modules/firefox.nix
+    ../modules/gtk.nix
+    ../modules/gpg-linux.nix
+    ../modules/fonts.nix
+    ../modules/vscode.nix
+  ];
+
+  services.kanshi.profiles."default".outputs = [
+    {
+      criteria = "eDP-1";
+      scale = 1.75;
+    }
   ];
 
   programs.alacritty.settings.font = {
@@ -29,7 +36,7 @@
   };
 
   # Using manual config for gh, programs.gh does not really support auth in a nice way.
-  xdg.configFile."gh/hosts.yml".source = ../machines/momonoke/secrets/gh_hosts.yml;
+  xdg.configFile."gh/hosts.yml".source = ../../machines/momonoke/secrets/gh_hosts.yml;
 
   home.packages = with pkgs; [
     tdesktop # Telegrm desktop app.

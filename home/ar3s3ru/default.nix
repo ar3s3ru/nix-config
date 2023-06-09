@@ -2,7 +2,7 @@
 
 {
   home.username = "ar3s3ru";
-  home.stateVersion = "22.05";
+  home.stateVersion = lib.mkDefault "22.05";
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -18,12 +18,12 @@
 
   imports = [
     inputs.nix-colors.homeManagerModule
-    ./modules/nvim
-    ./modules/programming
-    ./modules/alacritty.nix
-    ./modules/fish.nix
-    ./modules/git.nix
-    ./modules/ssh.nix
+    ../modules/nvim
+    ../modules/programming
+    ../modules/alacritty.nix
+    ../modules/fish.nix
+    ../modules/git.nix
+    ../modules/ssh.nix
   ];
 
   programs = {

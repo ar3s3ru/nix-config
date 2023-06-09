@@ -20,13 +20,6 @@
   hardware.asahi.useExperimentalGPUDriver = true;
   hardware.asahi.extractPeripheralFirmware = false;
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking = {
-    hostName = "teriyaki";
-
-    useDHCP = false;
-    interfaces.wlp1s0f0.useDHCP = true;
-  };
+  networking.hostName = "teriyaki";
+  networking.useDHCP = lib.mkForce true;
 }

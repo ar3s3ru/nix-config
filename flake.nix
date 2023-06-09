@@ -55,7 +55,7 @@
             nixos-hardware.nixosModules.lenovo-thinkpad-x270
             home-manager.nixosModules.home-manager
             (homeManagerConfig // {
-              home-manager.users.ar3s3ru = import ./home/ar3s3ru-momonoke.nix;
+              home-manager.users.ar3s3ru = import ./home/ar3s3ru/momonoke.nix;
               home-manager.extraSpecialArgs = (extraSpecialArgs // {
                 wallpaper = ./wallpapers/majelletta.jpg;
 
@@ -76,7 +76,7 @@
             nixos-apple-silicon.nixosModules.apple-silicon-support
             home-manager.nixosModules.home-manager
             (homeManagerConfig // {
-              home-manager.users.ar3s3ru = import ./home/ar3s3ru-teriyaki.nix;
+              home-manager.users.ar3s3ru = import ./home/ar3s3ru/teriyaki.nix;
               home-manager.extraSpecialArgs = (extraSpecialArgs // {
                 wallpaper = ./wallpapers/majelletta.jpg;
                 ssh.private-key = ./machines/teriyaki/secrets/id_ed25519;
