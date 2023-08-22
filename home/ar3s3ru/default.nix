@@ -24,6 +24,7 @@
     ../modules/fish.nix
     ../modules/git.nix
     ../modules/ssh.nix
+    ../modules/vscode.nix
   ];
 
   programs = {
@@ -41,6 +42,5 @@
     # LaTeX and TexLive
     texlive.combined.scheme-basic
     yt-dlp
-    signal-desktop
   ];
 }

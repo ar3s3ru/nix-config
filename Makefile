@@ -27,13 +27,27 @@ bootstrap/system:
 		--debug \
 		--disk-encryption-keys /tmp/cryptroot.key ./machines/${host}/secrets/cryptroot.key
 
-# Local run --------------------------------------------
+# Local run -------------------------------------------------------------------
 
 system:
 	sudo nixos-rebuild switch --flake .#$(host) --show-trace $(flags)
+
+system.darwin:
+	$(NIX) build .#darwinConfigurations.$(host).system
+	echo "switching to new version..."
+	./result/sw/bin/darwin-rebuild switch --flake .
+	echo "all done!"
 
 momonoke:
 	$(MAKE) system host=momonoke
 
 teriyaki:
 	$(MAKE) system host=teriyaki flags=--impure
+
+teriyaki-darwin:
+	$(MAKE) system.darwin host=teriyaki-darwin
+
+# Nix -------------------------------------------------------------------------
+
+flake.update:
+	$(NIX) flake update

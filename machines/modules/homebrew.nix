@@ -27,22 +27,22 @@
     brews = [
       "yabai"
       "skhd"
-      "pnpm"
-      "nvm"
-      "node"
-      "yarn"
+      "podman"
+      "aspect-build/aspect/aspect"
+      # For ruby and cocoapods
+      "cocoapods"
+      "libyaml"
+      "readline"
+    ];
+
+    casks = [
+      "dbeaver-community"
     ];
 
     taps = [
-      # default
-      "homebrew/bundle"
-      "homebrew/cask"
-      "homebrew/cask-drivers"
-      "homebrew/core"
-      "homebrew/services"
-      # custom
       "cmacrae/formulae" # spacebar
       "koekeishiya/formulae" # yabai
+      "aspect-build/aspect" # aspect-cli
     ];
   };
 }

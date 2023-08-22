@@ -51,26 +51,17 @@ let
     mktplcRef = {
       publisher = "fwcd";
       name = "kotlin";
-      version = "0.2.26";
-      sha256 = "djo1m0myIpEqz/jGyaUS2OROGnafY7YOI5T1sEneIK8=";
+      version = "0.2.31";
+      sha256 = "sha256-Y20Uqje/NzjBh23I9cXczlWFPEpb3qkqY/KsZvHKz/o=";
     };
   };
 
-  kddejong.vscode-cfn-lint = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      publisher = "kddejong";
-      name = "vscode-cfn-lint";
-      version = "0.24.3";
-      sha256 = "2XpvjY1W0u9FCKhn2e2vPSsBk5pveqlmWCeqlUOlz3I=";
-    };
-  };
-
-  editorconfig.edi = buildVscodeMarketplaceExtension {
+  editorconfig.editorconfig = buildVscodeMarketplaceExtension {
     mktplcRef = {
       publisher = "editorconfig";
-      name = "edi";
+      name = "editorconfig";
       version = "0.16.4";
-      sha256 = "";
+      sha256 = "sha256-j+P2oprpH0rzqI0VKt0JbZG19EDE7e7+kAb3MGGCRDk=";
     };
   };
 in
@@ -153,7 +144,7 @@ in
     };
 
     extensions = with pkgs.vscode-extensions; [
-      bungcip.better-toml
+      tamasfe.even-better-toml
       eamodio.gitlens
       golang.go
       hashicorp.terraform
@@ -164,15 +155,19 @@ in
       ms-python.python
       ms-python.vscode-pylance
       yzhang.markdown-all-in-one
+      esbenp.prettier-vscode
+      bradlc.vscode-tailwindcss
+      dbaeumer.vscode-eslint
+      jnoortheen.nix-ide
       # ms-vsliveshare.vsliveshare
       # Local derivation modules
+      editorconfig.editorconfig
       bufbuild.vscode-buf
       bazelbuild.vscode-bazel
       bmewburn.vscode-intelephense-client
       dlasagno.rasi
       jebbs.plantuml
       fwcd.kotlin
-      kddejong.vscode-cfn-lint
     ];
   };
 }
