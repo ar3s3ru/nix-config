@@ -8,10 +8,8 @@
   ];
 
   home.packages = with pkgs; [
-    docker-compose
     python
     protobuf
-    bazelisk
   ];
 
   # TODO: re-enable me for non-aarch64-linux

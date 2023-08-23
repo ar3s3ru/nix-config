@@ -28,11 +28,6 @@
       "yabai"
       "skhd"
       "podman"
-      "aspect-build/aspect/aspect"
-      # For ruby and cocoapods
-      "cocoapods"
-      "libyaml"
-      "readline"
     ];
 
     casks = [
@@ -42,7 +37,6 @@
     taps = [
       "cmacrae/formulae" # spacebar
       "koekeishiya/formulae" # yabai
-      "aspect-build/aspect" # aspect-cli
     ];
   };
 }

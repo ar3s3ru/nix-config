@@ -21,7 +21,6 @@
   xdg.configFile."gh/hosts.yml".source = ../../machines/momonoke/secrets/gh_hosts.yml;
 
   home.packages = with pkgs; [
-    google-cloud-sdk
     nodejs
     nodejs.pkgs.pnpm
   ];

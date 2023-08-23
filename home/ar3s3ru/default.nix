@@ -21,6 +21,7 @@
     ../modules/nvim
     ../modules/programming
     ../modules/alacritty.nix
+    ../modules/direnv.nix
     ../modules/fish.nix
     ../modules/git.nix
     ../modules/ssh.nix

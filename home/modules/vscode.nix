@@ -159,6 +159,7 @@ in
       bradlc.vscode-tailwindcss
       dbaeumer.vscode-eslint
       jnoortheen.nix-ide
+      mkhl.direnv
       # ms-vsliveshare.vsliveshare
       # Local derivation modules
       editorconfig.editorconfig

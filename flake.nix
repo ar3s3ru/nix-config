@@ -2,7 +2,7 @@
   description = "Dani's NixOS system configuration flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/master";
     nur.url = "github:nix-community/NUR";
 
     home-manager.url = "github:nix-community/home-manager/master";
