@@ -14,7 +14,7 @@
       core.editor = "nvim";
       init.defaultBranch = "main";
 
-      commit.gpgSign = false;
+      commit.gpgSign = true;
       tag.gpgSign = true;
 
       push.autoSetupRemote = true;
