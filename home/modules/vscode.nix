@@ -102,6 +102,10 @@ in
         "formatting.gofumpt" = true;
       };
 
+      "[json|jsonc]" = {
+        "editor.defaultFormatter" = "vscode.json-language-features";
+      };
+
       # Protobuf configuration.
       "[proto]" = { "editor.defaultFormatter" = "bufbuild.vscode-buf"; };
       "[proto3]" = { "editor.defaultFormatter" = "bufbuild.vscode-buf"; };

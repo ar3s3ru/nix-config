@@ -9,7 +9,6 @@
 
   home.packages = with pkgs; [
     python
-    protobuf
   ];
 
   # TODO: re-enable me for non-aarch64-linux

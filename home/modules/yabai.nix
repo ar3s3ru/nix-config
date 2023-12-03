@@ -122,8 +122,8 @@ in
         default < shift + ${mod} - f : ${yabai} -m window --toggle native-fullscreen
 
         # reload all the things!
-        default < ${mod} - c : ${brew} services restart yabai
-        default < shift + ${mod} - c : ${brew} services restart skhd
+        default < ${mod} - c : ${brew} yabai --restart-service
+        default < shift + ${mod} - c : ${brew} skhd --restart-service
       '';
     };
 }

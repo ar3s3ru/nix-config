@@ -10,7 +10,6 @@
     gopkgs
     delve
     golangci-lint
-    protoc-gen-go
   ];
 
   programs.go = {
