@@ -9,10 +9,9 @@
     allowUnsupportedSystem = true;
     allowBroken = true;
 
-    # FIXME: fish-completions is pulling in Python 2.7
-    # but it breaks the build.
+    # FIXME: fish-completions is pulling in Python 2.7 but it breaks the build.
     permittedInsecurePackages = [
-      "python-2.7.18.6"
+      "python-2.7.18.7"
     ];
   };
 
@@ -26,6 +25,7 @@
     ../modules/git.nix
     ../modules/ssh.nix
     ../modules/vscode.nix
+    ../modules/cloudflare.nix
   ];
 
   programs = {

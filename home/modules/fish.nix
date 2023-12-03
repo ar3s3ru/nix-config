@@ -5,7 +5,7 @@
     fzf
     bat
     duf
-    exa
+    eza
     prettyping
     htop
   ];
@@ -37,7 +37,7 @@
     shellAliases = {
       cat = "bat";
       du = "duf";
-      ls = "exa";
+      ls = "eza";
       top = "htop";
       ping = "prettyping --nolegend";
     };
