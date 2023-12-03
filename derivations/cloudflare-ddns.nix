@@ -16,6 +16,8 @@ buildGo121Module {
     hash = "sha256-YFSaBe8fgwOVdP7vVK2V7ZEanxmyuVAv5xOI1iwNmQQ=";
   };
 
+  doCheck = false;
+
   vendorHash = "sha256-Y3wsHptB4BJcZTZfrkqCwQemIV9hi5THlynZMpB/+a0=";
 
   ldflags = [

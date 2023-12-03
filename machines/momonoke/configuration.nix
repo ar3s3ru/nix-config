@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   imports = [
@@ -20,5 +20,27 @@
     useDHCP = false;
     interfaces.enp0s31f6.useDHCP = true;
     interfaces.wlp3s0.useDHCP = true;
+  };
+
+  systemd.services."cloudflare-ddns" = {
+    enable = true;
+    description = "Run Dynamic DNS to update api.flugg.app public IP address";
+
+    # This service requires network connection, or it won't work.
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+
+    environment = {
+      CF_API_TOKEN = lib.readFile ./secrets/cloudflare-token;
+      DOMAINS = "api.flugg.app";
+      PROXIED = "false";
+    };
+
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.cloudflare-ddns}/bin/ddns";
+      Restart = "always";
+      RestartSec = "30s";
+    };
   };
 }

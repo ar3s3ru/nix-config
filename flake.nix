@@ -51,6 +51,7 @@
           system = "x86_64-linux";
           modules = [
             ./machines/momonoke/configuration.nix
+            ./derivations/overlay.nix
             disko.nixosModules.disko
             nixos-hardware.nixosModules.lenovo-thinkpad-x270
             home-manager.nixosModules.home-manager
@@ -64,23 +65,6 @@
                   private-key = ./machines/momonoke/secrets/id_ed25519;
                   public-key = ./machines/momonoke/id_ed25519.pub;
                 };
-              });
-            })
-          ];
-        };
-
-        teriyaki = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          modules = [
-            ./machines/teriyaki/configuration.nix
-            nixos-apple-silicon.nixosModules.apple-silicon-support
-            home-manager.nixosModules.home-manager
-            (homeManagerConfig // {
-              home-manager.users.ar3s3ru = import ./home/ar3s3ru/teriyaki.nix;
-              home-manager.extraSpecialArgs = (extraSpecialArgs // {
-                wallpaper = ./wallpapers/majelletta.jpg;
-                ssh.private-key = ./machines/teriyaki/secrets/id_ed25519;
-                ssh.public-key = ./machines/teriyaki/id_ed25519.pub;
               });
             })
           ];
