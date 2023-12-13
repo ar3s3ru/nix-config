@@ -57,4 +57,50 @@ in
     proxied = "false";
     token = lib.readFile ./secrets/cloudflare-token-ar3s3ru.dev;
   };
+
+  # Open firewall to HTTP, HTTPS and SSH.
+  networking.firewall = {
+    enable = true;
+
+    # Let's be specific that the connections can only come in through Ethernet.
+    interfaces."enp0s31f6" = {
+      allowedTCPPorts = [ 20 80 443 ];
+    };
+  };
+
+  # Set up Let's Encrypt for self-signed certificats.
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "danilocianfr+letsencrypt@gmail.com";
+  };
+
+  # Reverse ingress proxy to coordinate different services.
+  services.nginx = {
+    enable = true;
+
+    commonHttpConfig = ''
+      log_format myformat '$remote_addr - $remote_user [$time_local] '
+                          '"$request" $status $body_bytes_sent '
+                          '"$http_referer" "$http_user_agent"';
+    '';
+
+    virtualHosts."momonoke.ar3s3ru.dev" = {
+      forceSSL = true;
+      enableACME = true;
+
+      locations."/" = {
+        return = "200 \"These are not the drones you're LOOKING for!\"";
+      };
+    };
+
+    virtualHosts."prod.flugg.app" = {
+      locations."/" = {
+        return = "200 \"These are not the DRONES you're looking for!\"";
+      };
+
+      locations."/api" = {
+        return = "200 \"THESE are not the drones you're looking for!\"";
+      };
+    };
+  };
 }
