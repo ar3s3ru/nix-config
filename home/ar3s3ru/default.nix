@@ -33,6 +33,7 @@
   };
 
   home.packages = with pkgs; [
+    dig
     jq
     yq-go
     mpv

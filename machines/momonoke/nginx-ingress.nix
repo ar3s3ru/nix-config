@@ -94,32 +94,5 @@ in
         proxyWebsockets = true;
       };
     };
-
-    # virtualHosts."k8s.flugg.app" = {
-    #   forceSSL = true;
-    #   enableACME = true;
-    #
-    #   locations."/" = {
-    #     proxyPass = "https://localhost:6443";
-    #   };
-    # };
-
-    # virtualHosts."prometheus.flugg.app" = {
-    #   forceSSL = true;
-    #   enableACME = true;
-    #
-    #   locations."/" = {
-    #     proxyPass = "http://localhost:9090";
-    #   };
-    # };
-
-    # virtualHosts."grafana.flugg.app" = {
-    #   forceSSL = true;
-    #   enableACME = true;
-    #
-    #   locations."/" = {
-    #     proxyPass = "http://localhost:3000";
-    #   };
-    # };
   };
 }

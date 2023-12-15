@@ -28,6 +28,10 @@ in
 
     locations."/" = {
       proxyPass = "http://localhost:${toString config.services.dockerRegistry.port}";
+      extraConfig = ''
+        # Those Docker images may be heavy af :(
+        client_max_body_size 2G;
+      '';
     };
   };
 
@@ -53,9 +57,6 @@ in
   environment.etc."rancher/k3s/registries.yaml" = {
     text = ''
       mirrors:
-        docker.io:
-          endpoint:
-            - "http://registry.flugg.app"
         registry.flugg.app:
           endpoint:
             - "http://localhost:${toString config.services.dockerRegistry.port}"
