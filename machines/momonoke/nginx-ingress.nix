@@ -47,10 +47,23 @@ in
     };
   };
 
+  environment.etc."acme/environment-vars".source = ./secrets/acme-environment-vars;
+
   # Set up Let's Encrypt for self-signed certificats.
   security.acme = {
     acceptTerms = true;
-    defaults.email = "danilocianfr+letsencrypt@gmail.com";
+
+    defaults = {
+      email = "danilocianfr+letsencrypt@gmail.com";
+      dnsProvider = "cloudflare";
+      environmentFile = "/etc/acme/environment-vars";
+      dnsPropagationCheck = true;
+    };
+
+    certs."flugg.app" = {
+      domain = "*.flugg.app";
+      group = "nginx"; # This certificate will be used by nginx to sign proxy vhosts.
+    };
   };
 
   # Reverse ingress proxy to coordinate different services.

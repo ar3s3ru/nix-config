@@ -11,6 +11,7 @@
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "server";
+    openFirewall = true;
   };
 
   services.headscale = {
