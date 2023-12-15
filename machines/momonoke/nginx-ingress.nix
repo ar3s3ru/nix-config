@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 let
   makeCloudflareDdns = { domain, proxied, token }: {
     enable = true;
@@ -25,9 +25,9 @@ let
   };
 in
 {
-  systemd.services."ddns-prod.flugg.app" = makeCloudflareDdns {
-    domain = "prod.flugg.app";
-    proxied = "true";
+  systemd.services."ddns-vpn.flugg.app" = makeCloudflareDdns {
+    domain = "vpn.flugg.app";
+    proxied = "false";
     token = lib.readFile ./secrets/cloudflare-token;
   };
 
@@ -43,7 +43,7 @@ in
 
     # Let's be specific that the connections can only come in through Ethernet.
     interfaces."enp0s31f6" = {
-      allowedTCPPorts = [ 20 80 443 ];
+      allowedTCPPorts = [ 20 80 443 6443 ];
     };
   };
 
@@ -72,14 +72,41 @@ in
       };
     };
 
-    virtualHosts."prod.flugg.app" = {
-      locations."/" = {
-        return = "200 \"These are not the DRONES you're looking for!\"";
-      };
+    virtualHosts."vpn.flugg.app" = {
+      forceSSL = true;
+      enableACME = true;
 
-      locations."/api" = {
-        return = "200 \"THESE are not the drones you're looking for!\"";
+      locations."/" = {
+        proxyPass = "http://localhost:${toString config.services.headscale.port}";
+        proxyWebsockets = true;
       };
     };
+
+    # virtualHosts."k8s.flugg.app" = {
+    #   forceSSL = true;
+    #   enableACME = true;
+    #
+    #   locations."/" = {
+    #     proxyPass = "https://localhost:6443";
+    #   };
+    # };
+
+    # virtualHosts."prometheus.flugg.app" = {
+    #   forceSSL = true;
+    #   enableACME = true;
+    #
+    #   locations."/" = {
+    #     proxyPass = "http://localhost:9090";
+    #   };
+    # };
+
+    # virtualHosts."grafana.flugg.app" = {
+    #   forceSSL = true;
+    #   enableACME = true;
+    #
+    #   locations."/" = {
+    #     proxyPass = "http://localhost:3000";
+    #   };
+    # };
   };
 }

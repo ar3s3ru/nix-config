@@ -4,6 +4,8 @@
   imports = [
     ./hardware-configuration.nix
     ./nginx-ingress.nix
+    ./kubernetes.nix
+    ./headscale.nix
     ../modules/shared.nix
     ../modules/linux.nix
     ../modules/physical.nix
