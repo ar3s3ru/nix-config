@@ -25,7 +25,6 @@
     ../modules/git.nix
     ../modules/ssh.nix
     ../modules/vscode.nix
-    ../modules/cloudflare.nix
   ];
 
   programs = {
