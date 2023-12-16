@@ -49,7 +49,7 @@ in
 
     extraFlags = ''
       --disable traefik
-      --tls-san k8s.prod.flugg.app
+      --tls-san prod.intranet.flugg.app
     '';
   };
 
