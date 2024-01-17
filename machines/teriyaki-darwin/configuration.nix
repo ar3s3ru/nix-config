@@ -11,6 +11,12 @@
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
+  # NOTE: set up of the client to talk with the server
+  # must be done manually.
+  services.tailscale.enable = false;
+  services.tailscale.overrideLocalDns = false;
+  networking.knownNetworkServices = [ "Wi-Fi" "iPhone USB" ];
+
   # Enable GnuPG Agent.
   # Please note, the actual agent config (e.g. pinentry)
   # is part of modules/gpg-darwin.nix.

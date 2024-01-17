@@ -15,7 +15,7 @@ SSH_OPTIONS=-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o Strict
 
 bootstrap/copy:
 	echo "REMEMBER: have you 'sudo systemctl start sshd' and 'passwd' on the target machine?"
-	rsync -av -e 'ssh $(SSH_OPTIONS) -p 22' \
+	rsync -av -e 'ssh ${SSH_OPTIONS} -p 22' \
 		--exclude='.git/' \
 		--exclude='.git-crypt/' \
 		$(MAKEFILE_DIR)/ ${or $(user), nixos}@${addr}:~/nix-config

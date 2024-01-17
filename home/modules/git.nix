@@ -24,6 +24,7 @@
   };
 
   xdg.configFile."gh/config.yml".text = /* yml */ ''
+    version: 1 # https://github.com/nix-community/home-manager/issues/4744
     git_protocol: https
     editor:
     prompt: enabled

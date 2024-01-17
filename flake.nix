@@ -69,6 +69,7 @@
             })
           ];
         };
+        dejima = import ./machines/dejima inputs;
       };
 
       darwinConfigurations = {
