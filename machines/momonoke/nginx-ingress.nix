@@ -1,37 +1,9 @@
 { lib, pkgs, config, ... }:
 let
-  makeCloudflareDdns = { domain, proxied, token }: {
-    enable = true;
-    description = "Run Dynamic DNS to update ${domain} public IP address";
-
-    wantedBy = [ "multi-user.target" ];
-
-    # This service requires network connection, or it won't work.
-    wants = [ "network-online.target" ];
-    after = [ "network-online.target" ];
-
-    environment = {
-      CF_API_TOKEN = token;
-      DOMAINS = domain;
-      PROXIED = proxied;
-    };
-
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.cloudflare-ddns}/bin/ddns";
-      Restart = "always";
-      RestartSec = "30s";
-    };
-  };
+  mkCloudflareDdnsSerivce = pkgs.callPackage ../../services/mk-cloudflare-ddns.nix { };
 in
 {
-  systemd.services."ddns-vpn.flugg.app" = makeCloudflareDdns {
-    domain = "vpn.flugg.app";
-    proxied = "false";
-    token = lib.readFile ./secrets/cloudflare-token;
-  };
-
-  systemd.services."ddns-momonoke.ar3s3ru.dev" = makeCloudflareDdns {
+  systemd.services."ddns-momonoke.ar3s3ru.dev" = mkCloudflareDdnsSerivce {
     domain = "momonoke.ar3s3ru.dev";
     proxied = "false";
     token = lib.readFile ./secrets/cloudflare-token-ar3s3ru.dev;
@@ -43,7 +15,7 @@ in
 
     # Let's be specific that the connections can only come in through Ethernet.
     interfaces."enp0s31f6" = {
-      allowedTCPPorts = [ 20 80 443 6443 ];
+      allowedTCPPorts = [ 20 80 443 ];
     };
   };
 
@@ -58,11 +30,6 @@ in
       dnsProvider = "cloudflare";
       environmentFile = "/etc/acme/environment-vars";
       dnsPropagationCheck = true;
-    };
-
-    certs."flugg.app" = {
-      domain = "*.flugg.app";
-      group = "nginx"; # This certificate will be used by nginx to sign proxy vhosts.
     };
   };
 
@@ -82,16 +49,6 @@ in
 
       locations."/" = {
         return = "200 \"These are not the drones you're LOOKING for!\"";
-      };
-    };
-
-    virtualHosts."vpn.flugg.app" = {
-      forceSSL = true;
-      enableACME = true;
-
-      locations."/" = {
-        proxyPass = "http://localhost:${toString config.services.headscale.port}";
-        proxyWebsockets = true;
       };
     };
   };

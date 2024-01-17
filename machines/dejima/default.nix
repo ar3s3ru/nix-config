@@ -10,5 +10,7 @@ nixpkgs.lib.nixosSystem {
     ./hardware-configuration.nix
     ./configuration.nix
     ./disko.nix
+    ./ddns.nix
+    ./tailscale.nix
   ];
 }

@@ -13,6 +13,7 @@
   time.timeZone = "Europe/Rome";
 
   networking.hostName = "dejima";
+  networking.domain = "ar3s3ru.dev";
   networking.networkmanager.enable = true;
 
   i18n.defaultLocale = "en_US.UTF-8";
