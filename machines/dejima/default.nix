@@ -3,7 +3,9 @@
 nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
   modules = [
+    nixos-hardware.nixosModules.common-pc-ssd
     nixos-hardware.nixosModules.common-cpu-intel
+    nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
     disko.nixosModules.disko
     ../../derivations/overlay.nix
     ../modules/latest-linux-kernel.nix
@@ -18,5 +20,9 @@ nixpkgs.lib.nixosSystem {
     ./disko.nix
     ./ddns.nix
     ./tailscale.nix
+    ./nginx.nix
+    ./jellyfin.nix
+    ./nvidia.nix
+    ./transmission.nix
   ];
 }

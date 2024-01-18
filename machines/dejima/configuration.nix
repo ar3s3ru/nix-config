@@ -20,6 +20,9 @@
     useXkbConfig = true; # use xkb.options in tty.
   };
 
+  # Disable documentation, we don't need it on servers anyway
+  documentation.enable = false;
+
   # Users creation can only be controlled through this configuration.
   users.mutableUsers = false;
   users.users.root.hashedPassword = "$6$IAwKbqRXgvJXNTPI$w8m6U48i5j9kCG9GoMSgeUC5XzIrxz9IA.8EmV91bZdlM.B82zI2.wdxR6SD.U8xBPlm3nIgtJGUvWChD.yYX/";
@@ -41,6 +44,7 @@
     plantuml
     graphviz
     unzip
+    pciutils
   ];
 
   # Enable virt-manager for some virtual machines.
