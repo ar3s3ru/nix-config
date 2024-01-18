@@ -10,7 +10,7 @@ export NIXPKGS_ALLOW_UNFREE = 1
 NIX_FLAGS := --extra-experimental-features nix-command --extra-experimental-features flakes
 NIX       := nix $(NIX_FLAGS)
 
-# System bootstrap -------------------------------------
+# System bootstrap ------------------------------------------------------------
 SSH_OPTIONS=-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
 bootstrap/copy:
@@ -18,7 +18,7 @@ bootstrap/copy:
 	rsync -av -e 'ssh -p 22' \
 		--exclude='.git/' \
 		--exclude='.git-crypt/' \
-		$(MAKEFILE_DIR)/ ${or $(user), nixos}@${addr}:~/nix-config
+		$(MAKEFILE_DIR)/ ${or $(user), nixos}@${hostname}:~/nix-config
 
 bootstrap/system:
 	$(NIX) run github:numtide/nixos-anywhere -- \
@@ -26,6 +26,17 @@ bootstrap/system:
 		--flake ".#${host}" \
 		--debug \
 		--disk-encryption-keys /tmp/cryptroot.key ./machines/${host}/secrets/cryptroot.key
+
+# Remote run ------------------------------------------------------------------
+
+host/deploy:
+	echo "==> copying the configuration to host '$(host)' on '$(hostname)'"
+	$(MAKE) bootstrap/copy user=$(user) hostname=$(hostname)
+	echo "==> initiating system configuration switch"
+	ssh root@$(hostname) 'cd nix-config && make system host=$(host)'
+
+host/dejima.ar3s3ru.dev:
+	$(MAKE) host/deploy host=dejima user=root hostname=dejima.ar3s3ru.dev
 
 # Local run -------------------------------------------------------------------
 

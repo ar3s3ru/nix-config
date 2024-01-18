@@ -7,9 +7,6 @@
 {
   nixpkgs.config.allowUnfree = true;
 
-  nix.package = pkgs.nixUnstable;
-  nix.extraOptions = "experimental-features = nix-command flakes";
-
   time.timeZone = "Europe/Rome";
 
   networking.hostName = "dejima";
@@ -46,27 +43,8 @@
     unzip
   ];
 
-  # Power management
-  services.acpid.enable = true;
-  services.power-profiles-daemon.enable = false;
-  powerManagement.powertop.enable = true;
-
-  # Bluetooth configuration.
-  services.blueman.enable = true;
-  hardware.bluetooth.enable = true;
-
-  # Enable Podman for containers with Docker compatibility.
-  virtualisation.podman.enable = true;
-  virtualisation.podman.dockerCompat = true;
-  virtualisation.podman.dockerSocket.enable = true;
-  virtualisation.podman.autoPrune.enable = true;
-
   # Enable virt-manager for some virtual machines.
   virtualisation.libvirtd.enable = true;
-
-  # Neovim is the best text editor period bye.
-  programs.neovim.enable = true;
-  programs.neovim.defaultEditor = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
