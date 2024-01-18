@@ -4,13 +4,6 @@
   system.stateVersion = lib.mkDefault "23.05";
   nixpkgs.config.allowUnfree = true;
 
-  nix = {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
-
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 

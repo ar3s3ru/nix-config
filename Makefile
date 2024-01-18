@@ -40,23 +40,20 @@ host/dejima.ar3s3ru.dev:
 
 # Local run -------------------------------------------------------------------
 
-system:
+nixos:
 	sudo nixos-rebuild switch --flake .#$(host) --show-trace $(flags)
 
-system.darwin:
-	$(NIX) build .#darwinConfigurations.$(host).system
+darwin:
+	$(NIX) build .#darwinConfigurations.$(host).system --show-trace
 	echo "switching to new version..."
 	./result/sw/bin/darwin-rebuild switch --flake .
 	echo "all done!"
 
-momonoke:
-	$(MAKE) system host=momonoke
+system/momonoke:
+	$(MAKE) nixos host=momonoke
 
-teriyaki:
-	$(MAKE) system host=teriyaki flags=--impure
-
-teriyaki-darwin:
-	$(MAKE) system.darwin host=teriyaki-darwin
+system/teriyaki:
+	$(MAKE) darwin host=teriyaki
 
 # Nix -------------------------------------------------------------------------
 

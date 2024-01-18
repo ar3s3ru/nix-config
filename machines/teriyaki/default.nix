@@ -12,8 +12,19 @@ darwin.lib.darwinSystem {
   modules = [
     home-manager.darwinModules.home-manager
     nix-colors.homeManagerModule
-    ../../home/config.nix
+    ../../derivations/overlay.nix
+    ../modules/nix-unstable.nix
     ./configuration.nix
-    ./user-ar3s3ru.nix
+    ./homebrew.nix
+    {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users.ar3s3ru = import ./user-ar3s3ru.nix;
+
+      home-manager.extraSpecialArgs.inputs = inputs;
+      home-manager.extraSpecialArgs.colorscheme = inputs.nix-colors.colorSchemes.monokai;
+      home-manager.extraSpecialArgs.ssh.private-key = ./secrets/id_ed25519;
+      home-manager.extraSpecialArgs.ssh.public-key = ./id_ed25519.pub;
+    }
   ];
 }

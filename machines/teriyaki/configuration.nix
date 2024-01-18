@@ -1,12 +1,37 @@
 { pkgs, config, lib, ... }:
 
 {
-  imports = [
-    ../modules/homebrew.nix
-    ../modules/shared.nix
+  system.stateVersion = 4;
+
+  # Set your time zone.
+  time.timeZone = "Europe/Berlin";
+
+  nixpkgs.config.allowUnfree = true;
+  # Python 2.7 is marked as insecure. Fix.
+  nixpkgs.config.permittedInsecurePackages = [
+    "python-2.7.18.7"
   ];
 
-  system.stateVersion = 4;
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment = {
+    systemPackages = with pkgs; [
+      wget
+      ripgrep
+      # NOTE: git is also set up in Home Manager, but I'm keeping it here
+      # so that I can also clone stuff without having a configured user
+      # necessarily.
+      git
+      git-crypt
+      gopass
+      gopass-jsonapi
+      gnumake
+      killall
+      plantuml
+      graphviz
+      unzip
+    ];
+  };
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
@@ -54,14 +79,11 @@
   #   NSDocumentSaveNewDocumentsToCloud = false;
   # };
 
-  fonts = {
-    fontDir.enable = true;
-
-    fonts = with pkgs; [
-      nerdfonts
-      terminus_font
-      terminus_font_ttf
-    ];
-  };
+  fonts.fontDir.enable = true;
+  fonts.fonts = with pkgs; [
+    nerdfonts
+    terminus_font
+    terminus_font_ttf
+  ];
 }
 

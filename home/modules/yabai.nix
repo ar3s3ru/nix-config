@@ -61,7 +61,7 @@ in
         :: default
 
         # terminal
-        default < ${mod} - return : ${pkgs.alacritty}/bin/alacritty
+        default < ${mod} - return : open -na "Alacritty.app"
 
         # split mode
         default < ${mod} - b : ${yabai} -m config split_type horizontal

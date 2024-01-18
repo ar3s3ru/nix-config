@@ -68,26 +68,6 @@
 
       darwinConfigurations = {
         teriyaki = import ./machines/teriyaki inputs;
-        # teriyaki-darwin = darwin.lib.darwinSystem {
-        #   system = "aarch64-darwin";
-        #   inputs = { inherit darwin nixpkgsConfig; };
-        #   modules = [
-        #     ./machines/teriyaki-darwin/configuration.nix
-        #     home-manager.darwinModules.home-manager
-        #     (homeManagerConfig // {
-        #       home-manager.users.ar3s3ru = import ./home/ar3s3ru/teriyaki-darwin.nix;
-        #       home-manager.extraSpecialArgs = (extraSpecialArgs // {
-        #         colorscheme = nix-colors.colorSchemes.monokai;
-
-        #         # SSH configuration for user.
-        #         ssh = {
-        #           private-key = ./machines/teriyaki-darwin/secrets/id_ed25519;
-        #           public-key = ./machines/teriyaki-darwin/id_ed25519.pub;
-        #         };
-        #       });
-        #     })
-        #   ];
-        # };
       };
     };
 }
