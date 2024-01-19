@@ -77,8 +77,12 @@ in
       partitions = {
         # Used to store any sort of media, like TV series, movies, etc.
         media = {
-          size = "500G";
+          size = "750G";
           content = mkExt4Partition "/media";
+        };
+        # Unpartitioned, we can use it to mount it on a VM.
+        vm-slow = {
+          size = "100%";
         };
       };
     };

@@ -33,7 +33,7 @@ host/deploy:
 	echo "==> copying the configuration to host '$(host)' on '$(hostname)'"
 	$(MAKE) bootstrap/copy user=$(user) hostname=$(hostname)
 	echo "==> initiating system configuration switch"
-	ssh root@$(hostname) 'cd nix-config && make system host=$(host)'
+	ssh root@$(hostname) 'cd nix-config && make nixos host=$(host)'
 
 host/dejima.ar3s3ru.dev:
 	$(MAKE) host/deploy host=dejima user=root hostname=dejima.ar3s3ru.dev
