@@ -3,7 +3,9 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { config, lib, pkgs, ... }:
-
+let
+  teriyaki-ssh-key = lib.readFile ../teriyaki/id_ed25519.pub;
+in
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -27,9 +29,7 @@
   users.mutableUsers = false;
   users.defaultUserShell = pkgs.fish;
   users.users.root.hashedPassword = "$6$IAwKbqRXgvJXNTPI$w8m6U48i5j9kCG9GoMSgeUC5XzIrxz9IA.8EmV91bZdlM.B82zI2.wdxR6SD.U8xBPlm3nIgtJGUvWChD.yYX/";
-  users.users.root.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQyl6NK57K5MkQsJww+M8jiEtS710g4H3rVz2UcGxUH danilocianfr@gmail.com"
-  ];
+  users.users.root.openssh.authorizedKeys.keys = [ teriyaki-ssh-key ];
 
   environment.systemPackages = with pkgs; [
     wget
