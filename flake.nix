@@ -41,33 +41,12 @@
     in
     {
       nixosConfigurations = {
-        momonoke = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./machines/momonoke/configuration.nix
-            ./derivations/overlay.nix
-            disko.nixosModules.disko
-            nixos-hardware.nixosModules.lenovo-thinkpad-x270
-            home-manager.nixosModules.home-manager
-            (homeManagerConfig // {
-              home-manager.users.ar3s3ru = import ./home/ar3s3ru/momonoke.nix;
-              home-manager.extraSpecialArgs = (extraSpecialArgs // {
-                wallpaper = ./wallpapers/majelletta.jpg;
-
-                # SSH configuration for user.
-                ssh = {
-                  private-key = ./machines/momonoke/secrets/id_ed25519;
-                  public-key = ./machines/momonoke/id_ed25519.pub;
-                };
-              });
-            })
-          ];
-        };
-        dejima = import ./machines/dejima inputs;
+        momonoke = import ./hosts/momonoke inputs;
+        dejima = import ./hosts/dejima inputs;
       };
 
       darwinConfigurations = {
-        teriyaki = import ./machines/teriyaki inputs;
+        teriyaki = import ./hosts/teriyaki inputs;
       };
     };
 }

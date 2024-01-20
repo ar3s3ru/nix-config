@@ -17,7 +17,7 @@ in
   };
 
   # Using manual config for gh, programs.gh does not really support auth in a nice way.
-  xdg.configFile."gh/hosts.yml".source = ../../machines/momonoke/secrets/gh_hosts.yml;
+  xdg.configFile."gh/hosts.yml".source = ../../hosts/momonoke/secrets/gh_hosts.yml;
 
   home.packages = with pkgs; [
     nodejs

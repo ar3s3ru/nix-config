@@ -147,7 +147,7 @@ in
     "python.formatting.autopep8Path" = "${pkgs.python39Packages.autopep8}/bin/autopep8";
     "python.languageServer" = "Pylance";
 
-    # Configuration from ./machines/default.nix
+    # Configuration from ./hosts/default.nix
     "plantuml.server" = "http://127.0.0.1:10808";
     "plantuml.render" = "PlantUMLServer";
 

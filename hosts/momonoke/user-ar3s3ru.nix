@@ -1,5 +1,3 @@
-# User configurations that are specific for the momonoke host.
-
 { config, lib, pkgs, inputs, ... }:
 
 {
@@ -9,14 +7,14 @@
   ];
 
   imports = [
-    ./default.nix
-    ../modules/sway
-    ../modules/firefox.nix
-    ../modules/gtk.nix
-    ../modules/gpg-linux.nix
-    ../modules/fonts.nix
-    ../modules/slack.nix
-    ../modules/vscode.nix
+    ../../home/ar3s3ru
+    # ../../home/modules/sway
+    # ../../home/modules/firefox.nix
+    # ../../home/modules/gtk.nix
+    ../../home/modules/gpg-linux.nix
+    # ../../home/modules/fonts.nix
+    # ../../home/modules/slack.nix
+    # ../../home/modules/vscode.nix
   ];
 
   programs.alacritty.settings.font = {
@@ -33,12 +31,12 @@
   xdg.configFile."gh/hosts.yml".source = ../../hosts/momonoke/secrets/gh_hosts.yml;
 
   home.packages = with pkgs; [
-    tdesktop # Telegrm desktop app.
-    imagemagick
+    # tdesktop # Telegrm desktop app.
+    # imagemagick
   ];
 
   # Enable mpv hardware acceleration.
-  programs.fish.shellAliases = {
-    mpv = "mpv --hwdec=vaapi --gpu-context=wayland";
-  };
+  # programs.fish.shellAliases = {
+  #   mpv = "mpv --hwdec=vaapi --gpu-context=wayland";
+  # };
 }

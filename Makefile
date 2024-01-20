@@ -25,7 +25,7 @@ bootstrap/system:
 		nixos@${addr} \
 		--flake ".#${host}" \
 		--debug \
-		--disk-encryption-keys /tmp/cryptroot.key ./machines/${host}/secrets/cryptroot.key
+		--disk-encryption-keys /tmp/cryptroot.key ./hosts/${host}/secrets/cryptroot.key
 
 # Remote run ------------------------------------------------------------------
 

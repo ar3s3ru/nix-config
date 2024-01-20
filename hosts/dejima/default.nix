@@ -15,6 +15,9 @@ nixpkgs.lib.nixosSystem {
     ../modules/podman.nix
     ../modules/neovim.nix
     ../modules/bluetooth.nix
+    ../modules/gpg.nix
+    ../modules/firewall.nix
+    ../modules/openssh.nix
     ./hardware-configuration.nix
     ./configuration.nix
     ./disko.nix
