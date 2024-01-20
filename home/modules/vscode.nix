@@ -6,8 +6,8 @@ let
     mktplcRef = {
       publisher = "bazelbuild";
       name = "vscode-bazel";
-      version = "0.7.0";
-      sha256 = "/a34MMsHy7zmGrVAtjMWKmulwS+lip3J1YugkACMmxc=";
+      version = "0.8.1";
+      sha256 = "VbFbFi77hTBJtXXI+jdp5l8wMIRx0UrXt5tXHs3xaDE=";
     };
   };
 
@@ -24,8 +24,8 @@ let
     mktplcRef = {
       publisher = "bufbuild";
       name = "vscode-buf";
-      version = "0.5.1";
-      sha256 = "73+VblPnfozEyqdqUJsUjGY6FKYS70keXIpEXS8EvxA=";
+      version = "0.5.3";
+      sha256 = "ZfwTj6S54H0ympdjc4/3xBwlvR7zg4vJ98gyVwL8ZRw=";
     };
   };
 
@@ -42,8 +42,8 @@ let
     mktplcRef = {
       publisher = "jebbs";
       name = "plantuml";
-      version = "2.17.2";
-      sha256 = "e6eOhqGAASel4ywtj0j+kDInmcY5Ot5M4sOURwZ2tns=";
+      version = "2.17.5";
+      sha256 = "C/kf+rYGTIdExxivNKHWeOzNsPAOWz2jn4sc52+sClA=";
     };
   };
 
@@ -51,8 +51,8 @@ let
     mktplcRef = {
       publisher = "fwcd";
       name = "kotlin";
-      version = "0.2.31";
-      sha256 = "sha256-Y20Uqje/NzjBh23I9cXczlWFPEpb3qkqY/KsZvHKz/o=";
+      version = "0.2.34";
+      sha256 = "03F6cHIA9Tx8IHbVswA8B58tB8aGd2iQi1i5+1e1p4k=";
     };
   };
 
@@ -74,105 +74,103 @@ in
     python39Packages.autopep8 # Used by the python extension.
   ];
 
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscode;
+  programs.vscode.enable = true;
+  programs.vscode.mutableExtensionsDir = true;
 
-    userSettings = {
-      "editor.rulers" = [ 80 120 ];
-      "editor.fontFamily" = "'Font Awesome','Terminus (TTF)','monospace', monospace,'Droid Sans Mono', 'Droid Sans Fallback'";
-      "editor.formatOnSave" = true;
-      "editor.formatOnPaste" = true;
-      "editor.suggestSelection" = "first";
-      "files.insertFinalNewline" = true;
-      "files.trimTrailingWhitespace" = true;
-      "security.workspace.trust.untrustedFiles" = "open";
+  programs.vscode.extensions = with pkgs.vscode-extensions; [
+    tamasfe.even-better-toml
+    eamodio.gitlens
+    golang.go
+    hashicorp.terraform
+    jnoortheen.nix-ide
+    mechatroner.rainbow-csv
+    matklad.rust-analyzer
+    zxh404.vscode-proto3
+    ms-python.python
+    ms-python.vscode-pylance
+    yzhang.markdown-all-in-one
+    esbenp.prettier-vscode
+    bradlc.vscode-tailwindcss
+    dbaeumer.vscode-eslint
+    jnoortheen.nix-ide
+    mkhl.direnv
+    # ms-vsliveshare.vsliveshare
+    # Local derivation modules
+    editorconfig.editorconfig
+    bufbuild.vscode-buf
+    bazelbuild.vscode-bazel
+    bmewburn.vscode-intelephense-client
+    dlasagno.rasi
+    jebbs.plantuml
+    fwcd.kotlin
+  ];
 
-      # Golang configuration.
-      "go.toolsManagement.autoUpdate" = false;
-      "[go]" = { "editor.defaultFormatter" = "golang.go"; };
-      "go.lintTool" = "golangci-lint";
-      "go.alternateTools" = {
-        "dlv" = "${pkgs.delve}/bin/dlv";
-        "go" = "${config.programs.go.package}/bin/go";
-        "gopls" = "${pkgs.gopls}/bin/gopls";
-      };
-      "gopls" = {
-        "ui.semanticTokens" = true;
-        "formatting.gofumpt" = true;
-      };
+  programs.vscode.userSettings = {
+    "editor.rulers" = [ 80 120 ];
+    "editor.fontFamily" = "'Font Awesome','Terminus (TTF)','monospace', monospace,'Droid Sans Mono', 'Droid Sans Fallback'";
+    "editor.formatOnSave" = true;
+    "editor.formatOnPaste" = true;
+    "editor.suggestSelection" = "first";
+    "files.insertFinalNewline" = true;
+    "files.trimTrailingWhitespace" = true;
+    "security.workspace.trust.untrustedFiles" = "open";
 
-      "[json|jsonc]" = {
-        "editor.defaultFormatter" = "vscode.json-language-features";
-      };
-
-      # Protobuf configuration.
-      "[proto]" = { "editor.defaultFormatter" = "bufbuild.vscode-buf"; };
-      "[proto3]" = { "editor.defaultFormatter" = "bufbuild.vscode-buf"; };
-
-      # Markdown configuration.
-      "markdown.extension.toc.omittedFromToc" = { };
-
-      # Nix configuration.
-      "nix.enableLanguageServer" = true;
-
-      # Python configuration
-      "python.formatting.autopep8Path" = "${pkgs.python39Packages.autopep8}/bin/autopep8";
-      "python.languageServer" = "Pylance";
-
-      # Configuration from ./machines/default.nix
-      "plantuml.server" = "http://127.0.0.1:10808";
-      "plantuml.render" = "PlantUMLServer";
-
-      # These are for CloudFormation.
-      "yaml.customTags" = [
-        "!And"
-        "!If"
-        "!Not"
-        "!Equals"
-        "!Or"
-        "!FindInMap sequence"
-        "!Base64"
-        "!Cidr"
-        "!Ref"
-        "!Sub"
-        "!GetAtt"
-        "!GetAZs"
-        "!ImportValue"
-        "!Select"
-        "!Select sequence"
-        "!Split"
-        "!Join sequence"
-      ];
-      "yaml.format.enable" = true;
+    # Golang configuration.
+    "go.toolsManagement.autoUpdate" = false;
+    "[go]" = { "editor.defaultFormatter" = "golang.go"; };
+    "go.lintTool" = "golangci-lint";
+    "go.alternateTools" = {
+      "dlv" = "${pkgs.delve}/bin/dlv";
+      "go" = "${config.programs.go.package}/bin/go";
+      "gopls" = "${pkgs.gopls}/bin/gopls";
+    };
+    "gopls" = {
+      "ui.semanticTokens" = true;
+      "formatting.gofumpt" = true;
     };
 
-    extensions = with pkgs.vscode-extensions; [
-      tamasfe.even-better-toml
-      eamodio.gitlens
-      golang.go
-      hashicorp.terraform
-      jnoortheen.nix-ide
-      mechatroner.rainbow-csv
-      matklad.rust-analyzer
-      zxh404.vscode-proto3
-      ms-python.python
-      ms-python.vscode-pylance
-      yzhang.markdown-all-in-one
-      esbenp.prettier-vscode
-      bradlc.vscode-tailwindcss
-      dbaeumer.vscode-eslint
-      jnoortheen.nix-ide
-      mkhl.direnv
-      # ms-vsliveshare.vsliveshare
-      # Local derivation modules
-      editorconfig.editorconfig
-      bufbuild.vscode-buf
-      bazelbuild.vscode-bazel
-      bmewburn.vscode-intelephense-client
-      dlasagno.rasi
-      jebbs.plantuml
-      fwcd.kotlin
+    "[json|jsonc]" = {
+      "editor.defaultFormatter" = "vscode.json-language-features";
+    };
+
+    # Protobuf configuration.
+    "[proto]" = { "editor.defaultFormatter" = "bufbuild.vscode-buf"; };
+    "[proto3]" = { "editor.defaultFormatter" = "bufbuild.vscode-buf"; };
+
+    # Markdown configuration.
+    "markdown.extension.toc.omittedFromToc" = { };
+
+    # Nix configuration.
+    "nix.enableLanguageServer" = true;
+
+    # Python configuration
+    "python.formatting.autopep8Path" = "${pkgs.python39Packages.autopep8}/bin/autopep8";
+    "python.languageServer" = "Pylance";
+
+    # Configuration from ./machines/default.nix
+    "plantuml.server" = "http://127.0.0.1:10808";
+    "plantuml.render" = "PlantUMLServer";
+
+    # These are for CloudFormation.
+    "yaml.customTags" = [
+      "!And"
+      "!If"
+      "!Not"
+      "!Equals"
+      "!Or"
+      "!FindInMap sequence"
+      "!Base64"
+      "!Cidr"
+      "!Ref"
+      "!Sub"
+      "!GetAtt"
+      "!GetAZs"
+      "!ImportValue"
+      "!Select"
+      "!Select sequence"
+      "!Split"
+      "!Join sequence"
     ];
+    "yaml.format.enable" = true;
   };
 }

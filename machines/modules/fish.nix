@@ -1,8 +1,26 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
-  # Enable fish shell globally, but configuration is in the Home Manager flake.
+  environment.systemPackages = with pkgs; [
+    fzf
+    bat
+    duf
+    eza
+    prettyping
+    htop
+    grc
+    # Fish plugins
+    # fishPlugins.fzf-fish
+    fishPlugins.forgit
+    fishPlugins.grc
+  ];
+
   programs.fish.enable = true;
-  environment.shells = [ pkgs.fish ];
-  users.defaultUserShell = pkgs.fish;
+  programs.fish.shellAliases = {
+    cat = "bat";
+    du = "duf";
+    ls = "eza";
+    top = "htop";
+    ping = "prettyping --nolegend";
+  };
 }

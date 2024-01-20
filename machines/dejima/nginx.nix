@@ -1,17 +1,21 @@
 { config, ... }:
 
 {
-  security.acme.acceptTerms = true;
-  security.acme.defaults = {
-    email = "danilocianfr+letsencrypt@gmail.com";
-    group = config.services.nginx.group;
-    dnsProvider = "cloudflare";
-    environmentFile = "/var/lib/acme/environment"; # NOTE: this file must be added manually!
-    dnsPropagationCheck = true;
-    extraLegoFlags = [ "--dns.resolvers=8.8.8.8:53" ];
-  };
-  security.acme.certs."ar3s3ru.dev" = {
-    dnsPropagationCheck = false;
+  security.acme = {
+    acceptTerms = true;
+
+    defaults = {
+      email = "danilocianfr+letsencrypt@gmail.com";
+      group = config.services.nginx.group;
+      dnsProvider = "cloudflare";
+      environmentFile = "/var/lib/acme/environment"; # NOTE: this file must be added manually!
+      dnsPropagationCheck = true;
+      extraLegoFlags = [ "--dns.resolvers=8.8.8.8:53" ];
+    };
+
+    certs."ar3s3ru.dev" = {
+      dnsPropagationCheck = false;
+    };
   };
 
   services.nginx = {

@@ -25,6 +25,7 @@
 
   # Users creation can only be controlled through this configuration.
   users.mutableUsers = false;
+  users.defaultUserShell = pkgs.fish;
   users.users.root.hashedPassword = "$6$IAwKbqRXgvJXNTPI$w8m6U48i5j9kCG9GoMSgeUC5XzIrxz9IA.8EmV91bZdlM.B82zI2.wdxR6SD.U8xBPlm3nIgtJGUvWChD.yYX/";
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQyl6NK57K5MkQsJww+M8jiEtS710g4H3rVz2UcGxUH danilocianfr@gmail.com"

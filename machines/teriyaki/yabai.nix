@@ -61,8 +61,7 @@ in
         :: default
 
         # terminal
-        default < ${mod} - return : open -na "Alacritty.app"
-
+        default < ${mod} - return : alacritty
         # split mode
         default < ${mod} - b : ${yabai} -m config split_type horizontal
         default < ${mod} - v : ${yabai} -m config split_type vertical
@@ -122,8 +121,8 @@ in
         default < shift + ${mod} - f : ${yabai} -m window --toggle native-fullscreen
 
         # reload all the things!
-        default < ${mod} - c : ${brew} yabai --restart-service
-        default < shift + ${mod} - c : ${brew} skhd --restart-service
+        default < ${mod} - c : yabai --restart-service
+        default < shift + ${mod} - c : skhd --restart-service
       '';
     };
 }
