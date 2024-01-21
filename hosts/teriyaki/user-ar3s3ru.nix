@@ -13,7 +13,7 @@ in
 
   programs.vscode.userSettings = {
     "editor.fontFamily" = lib.mkForce "'${font}'";
-    "editor.fontSize" = 14;
+    "editor.fontSize" = 12;
   };
 
   home.packages = with pkgs; [
