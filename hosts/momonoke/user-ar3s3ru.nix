@@ -1,11 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  # Necessary for some external packages.
-  nixpkgs.overlays = [
-    inputs.nur.overlay
-  ];
-
   imports = [
     ../../home/ar3s3ru
     # ../../home/modules/sway

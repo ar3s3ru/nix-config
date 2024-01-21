@@ -10,6 +10,7 @@ nixpkgs.lib.nixosSystem {
     ../../derivations/overlay.nix
     ../modules/latest-linux-kernel.nix
     ../modules/nix-unstable.nix
+    ../modules/nixpkgs.nix
     ../modules/fish.nix
     ../modules/power-management.nix
     ../modules/podman.nix
@@ -25,7 +26,9 @@ nixpkgs.lib.nixosSystem {
     ./tailscale.nix
     ./nginx.nix
     ./jellyfin.nix
+    ./jellyseerr.nix
     ./nvidia.nix
     ./transmission.nix
+    ./group-media.nix
   ];
 }

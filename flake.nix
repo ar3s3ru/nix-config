@@ -2,8 +2,9 @@
   description = "Dani's NixOS system configuration flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
+    flake-utils.url = "github:numtide/flake-utils";
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -22,24 +23,11 @@
     nixos-apple-silicon.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixos-hardware, home-manager, nix-colors, darwin, nur, disko, nixos-apple-silicon, ... }@inputs:
+  outputs = inputs:
     let
-      stateVersion = "23.05";
-
-      homeManagerConfig = {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-      };
-
-      extraSpecialArgs = {
-        # NOTE: this is to pass nix-colors to the other modules.
-        inherit inputs;
-
-        # Color scheme to be used for all applications.
-        colorscheme = nix-colors.colorSchemes.atelier-dune;
-      };
+      shells = import ./shells inputs;
     in
-    {
+    shells // {
       nixosConfigurations = {
         momonoke = import ./hosts/momonoke inputs;
         dejima = import ./hosts/dejima inputs;

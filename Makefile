@@ -18,6 +18,8 @@ bootstrap/copy:
 	rsync -av -e 'ssh -p 22' \
 		--exclude='.git/' \
 		--exclude='.git-crypt/' \
+		--exclude='.direnv' \
+		--exclude='**/.terraform' \
 		$(MAKEFILE_DIR)/ ${or $(user), nixos}@${hostname}:~/nix-config
 
 bootstrap/system:
@@ -33,10 +35,13 @@ host/deploy:
 	echo "==> copying the configuration to host '$(host)' on '$(hostname)'"
 	$(MAKE) bootstrap/copy user=$(user) hostname=$(hostname)
 	echo "==> initiating system configuration switch"
-	ssh root@$(hostname) 'cd nix-config && make nixos host=$(host)'
+	ssh ${or $(user), root}@$(hostname) 'cd nix-config && make nixos host=$(host)'
 
 host/dejima.ar3s3ru.dev:
 	$(MAKE) host/deploy host=dejima user=root hostname=dejima.ar3s3ru.dev
+
+host/momonoke.ar3s3ru.dev:
+	$(MAKE) host/deploy host=momonoke user=$(user) hostname=192.168.1.130
 
 # Local run -------------------------------------------------------------------
 

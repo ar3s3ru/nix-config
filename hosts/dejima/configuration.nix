@@ -7,8 +7,6 @@ let
   teriyaki-ssh-key = lib.readFile ../teriyaki/id_ed25519.pub;
 in
 {
-  nixpkgs.config.allowUnfree = true;
-
   time.timeZone = "Europe/Rome";
 
   networking.hostName = "dejima";

@@ -14,6 +14,7 @@ darwin.lib.darwinSystem {
     nix-colors.homeManagerModule
     ../../derivations/overlay.nix
     ../modules/nix-unstable.nix
+    ../modules/nixpkgs.nix
     ../modules/fish.nix
     ./configuration.nix
     ./homebrew.nix

@@ -6,12 +6,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
-  nixpkgs.config.allowUnfree = true;
-  # Python 2.7 is marked as insecure. Fix.
-  nixpkgs.config.permittedInsecurePackages = [
-    "python-2.7.18.7"
-  ];
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment = {
