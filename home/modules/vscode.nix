@@ -11,15 +11,6 @@ let
     };
   };
 
-  bmewburn.vscode-intelephense-client = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      publisher = "bmewburn";
-      name = "vscode-intelephense-client";
-      version = "1.9.5";
-      sha256 = "KqWSQ+p5KqRVULwjoWuNE+lIEYkaUVkeOwMpXUxccqw=";
-    };
-  };
-
   bufbuild.vscode-buf = buildVscodeMarketplaceExtension {
     mktplcRef = {
       publisher = "bufbuild";
@@ -29,39 +20,12 @@ let
     };
   };
 
-  dlasagno.rasi = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      publisher = "dlasagno";
-      name = "rasi";
-      version = "1.0.0";
-      sha256 = "s60alej3cNAbSJxsRlIRE2Qha6oAsmcOBbWoqp+w6fk=";
-    };
-  };
-
-  jebbs.plantuml = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      publisher = "jebbs";
-      name = "plantuml";
-      version = "2.17.5";
-      sha256 = "C/kf+rYGTIdExxivNKHWeOzNsPAOWz2jn4sc52+sClA=";
-    };
-  };
-
   fwcd.kotlin = buildVscodeMarketplaceExtension {
     mktplcRef = {
       publisher = "fwcd";
       name = "kotlin";
       version = "0.2.34";
       sha256 = "03F6cHIA9Tx8IHbVswA8B58tB8aGd2iQi1i5+1e1p4k=";
-    };
-  };
-
-  editorconfig.editorconfig = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      publisher = "editorconfig";
-      name = "editorconfig";
-      version = "0.16.4";
-      sha256 = "sha256-j+P2oprpH0rzqI0VKt0JbZG19EDE7e7+kAb3MGGCRDk=";
     };
   };
 in
@@ -84,7 +48,7 @@ in
     hashicorp.terraform
     jnoortheen.nix-ide
     mechatroner.rainbow-csv
-    matklad.rust-analyzer
+    rust-lang.rust-analyzer
     zxh404.vscode-proto3
     ms-python.python
     ms-python.vscode-pylance
@@ -94,14 +58,14 @@ in
     dbaeumer.vscode-eslint
     jnoortheen.nix-ide
     mkhl.direnv
+    redhat.vscode-yaml
+    jock.svg
+    editorconfig.editorconfig
+    jebbs.plantuml
     # ms-vsliveshare.vsliveshare
     # Local derivation modules
-    editorconfig.editorconfig
     bufbuild.vscode-buf
     bazelbuild.vscode-bazel
-    bmewburn.vscode-intelephense-client
-    dlasagno.rasi
-    jebbs.plantuml
     fwcd.kotlin
   ];
 

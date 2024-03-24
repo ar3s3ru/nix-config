@@ -1,10 +1,14 @@
-{ pkgs, ... }:
+{ unixtools
+, gnumake
+, terraform
+, terragrunt
+, nil
+, mkShell
+}:
 
-pkgs.mkShell
-{
+mkShell {
   name = "default";
-
-  packages = with pkgs; [
+  packages = [
     # Nice utilities.
     unixtools.watch
     gnumake
@@ -12,5 +16,8 @@ pkgs.mkShell
     # Relevant packages to apply the configurations.
     terraform
     terragrunt
+
+    # Linters
+    nil
   ];
 }

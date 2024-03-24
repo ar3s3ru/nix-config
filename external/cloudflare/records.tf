@@ -1,7 +1,3 @@
-# resource "cloudflare_resource" "name" {
-
-# }
-
 data "cloudflare_zone" "ar3s3ru-dev" {
   name = "ar3s3ru.dev"
 }

@@ -32,6 +32,7 @@
 
     casks = [
       "dbeaver-community"
+      "podman-desktop"
     ];
 
     taps = [

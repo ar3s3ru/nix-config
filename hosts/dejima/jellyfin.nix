@@ -20,15 +20,24 @@
     locations."/" = {
       proxyPass = "http://localhost:8096";
       proxyWebsockets = true;
+
+      extraConfig = ''
+        # Disable buffering when the nginx proxy gets very resource heavy upon streaming
+        proxy_buffering off;
+      '';
     };
 
     extraConfig = ''
-      # Some players don't reopen a socket and playback stops totally instead of resuming after an extended pause
-      send_timeout 100m;
+      # NOTE: from https://jellyfin.org/docs/general/networking/nginx/#nginx-from-a-subdomain-jellyfinexampleorg
+      #
+      # The default `client_max_body_size` is 1M, this might not be enough for some posters, etc.
+      client_max_body_size 20M;
 
-      # Buffering off send to the client as soon as the data is received from Jellyfin.
-      proxy_redirect off;
-      proxy_buffering off;
+      # Security / XSS Mitigation Headers
+      # NOTE: X-Frame-Options may cause issues with the webOS app
+      # add_header X-Frame-Options "SAMEORIGIN";
+      add_header X-XSS-Protection "0"; # Do NOT enable. This is obsolete/dangerous
+      add_header X-Content-Type-Options "nosniff";
     '';
   };
 }

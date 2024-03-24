@@ -1,14 +1,17 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 
 {
   services.jellyseerr.enable = true;
   services.jellyseerr.openFirewall = false;
 
+  # Radarr is used to download torrents.
+  services.radarr.enable = true;
+
   security.acme.certs."ar3s3ru.dev".extraDomainNames = [
     "jellyseerr.ar3s3ru.dev"
   ];
 
-  # Expose the Plex server through NGINX, this avoids the need for opening ports
+  # Expose the Jellyseerr server through NGINX, this avoids the need for opening ports
   # on the router.
   services.nginx.virtualHosts."jellyseerr.ar3s3ru.dev" = {
     forceSSL = true;

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ lib, pkgs, ... }:
 let
   font = "MesloLGSDZ Nerd Font";
 in
@@ -13,7 +13,7 @@ in
 
   programs.vscode.userSettings = {
     "editor.fontFamily" = lib.mkForce "'${font}'";
-    "editor.fontSize" = 12;
+    "editor.fontSize" = 14;
   };
 
   home.packages = with pkgs; [

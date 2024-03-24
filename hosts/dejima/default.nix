@@ -30,5 +30,6 @@ nixpkgs.lib.nixosSystem {
     ./nvidia.nix
     ./transmission.nix
     ./group-media.nix
+    ./direnv.nix
   ];
 }
