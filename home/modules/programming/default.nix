@@ -1,14 +1,10 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
     ./kafka
     ./go.nix
     ./rust.nix
-  ];
-
-  home.packages = with pkgs; [
-    python
   ];
 
   # TODO: re-enable me for non-aarch64-linux

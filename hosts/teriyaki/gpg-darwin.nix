@@ -1,8 +1,7 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
-    pinentry
     pinentry_mac
   ];
 }

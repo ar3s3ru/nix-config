@@ -49,7 +49,7 @@ nixos:
 	sudo nixos-rebuild switch --flake .#$(host) --show-trace $(flags)
 
 darwin:
-	$(NIX) build .#darwinConfigurations.$(host).system --show-trace
+	$(NIX) build .#darwinConfigurations.$(host).system
 	echo "switching to new version..."
 	./result/sw/bin/darwin-rebuild switch --flake .
 	echo "all done!"

@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   teriyaki-ssh-key = lib.readFile ../teriyaki/id_ed25519.pub;
 in

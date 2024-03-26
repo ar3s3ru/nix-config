@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 let
   inherit (pkgs.vscode-utils) buildVscodeMarketplaceExtension;
 
@@ -34,8 +34,7 @@ in
   # If you can't find something here, look for it there.
   home.packages = with pkgs; [
     nixpkgs-fmt # Used by the nixos extension to format *.nix files.
-    rnix-lsp # Used by nixos extension for autocompletion.
-    python39Packages.autopep8 # Used by the python extension.
+    nil # Used by nixos extension for autocompletion.
   ];
 
   programs.vscode.enable = true;
@@ -50,8 +49,6 @@ in
     mechatroner.rainbow-csv
     rust-lang.rust-analyzer
     zxh404.vscode-proto3
-    ms-python.python
-    ms-python.vscode-pylance
     yzhang.markdown-all-in-one
     esbenp.prettier-vscode
     bradlc.vscode-tailwindcss
@@ -106,10 +103,6 @@ in
 
     # Nix configuration.
     "nix.enableLanguageServer" = true;
-
-    # Python configuration
-    "python.formatting.autopep8Path" = "${pkgs.python39Packages.autopep8}/bin/autopep8";
-    "python.languageServer" = "Pylance";
 
     # Configuration from ./hosts/default.nix
     "plantuml.server" = "http://127.0.0.1:10808";

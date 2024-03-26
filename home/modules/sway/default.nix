@@ -1,4 +1,4 @@
-{ config, lib, nixosConfig, pkgs, colorscheme, wallpaper, ... }:
+{ config, lib, pkgs, colorscheme, wallpaper, ... }:
 let
   cfg = config.wayland.windowManager.sway.config;
 
@@ -135,7 +135,7 @@ in
         # -- Start a new terminal.
         "${cfg.modifier}+Return" = "exec ${cfg.terminal}";
         # -- Lock the screen.
-        "${cfg.modifier}+Ctrl+q" = "exec fish -c '${pkgs.swaylock}/bin/swaylock -f -d -c (echo \'${colorscheme.colors.base00}\' | sed \'s/\\#//\')'";
+        "${cfg.modifier}+Ctrl+q" = "exec fish -c '${pkgs.swaylock}/bin/swaylock -f -d -c (echo \'${colorscheme.palette.base00}\' | sed \'s/\\#//\')'";
         # -- Hibernate the system.
         "${cfg.modifier}+Ctrl+h" = "exec fish -c 'notify-send \"Hibernating...\" \"The system is about to go into hibernation.\" && systemctl hibernate'";
         # -- Shutdown the system.

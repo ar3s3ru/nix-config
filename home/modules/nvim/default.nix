@@ -1,4 +1,4 @@
-{ config, pkgs, profile, inputs, colorscheme, ... }:
+{ pkgs, inputs, colorscheme, ... }:
 
 let
   settings = ./settings.lua;
@@ -16,7 +16,7 @@ with inputs.nix-colors.lib-contrib { inherit pkgs; };
     shellcheck
     # neovide
     # Nix
-    rnix-lsp
+    nil
     nixfmt
     # Lua
     stylua
@@ -32,8 +32,6 @@ with inputs.nix-colors.lib-contrib { inherit pkgs; };
     nodePackages.typescript
     nodePackages.typescript-language-server
     nodePackages.prettier # Code formatter.
-    # AWS CloudFormation
-    python310Packages.cfn-lint
   ];
 
   programs.neovim = {
@@ -130,10 +128,21 @@ with inputs.nix-colors.lib-contrib { inherit pkgs; };
 
             -- FIXME: use lua lsp instead, gotta figure out which one is it for Lua.
             -- lsp.sumneko_lua.setup{ on_attach = on_attach }
-            lsp.rnix.setup{ on_attach = on_attach }
             lsp.gopls.setup{ on_attach = on_attach }
             lsp.terraformls.setup{ on_attach = on_attach }
             lsp.tflint.setup{ on_attach = on_attach }
+
+            lsp.nil_ls.setup {
+              on_attach = on_attach,
+              autostart = true,
+              settings = {
+                ['nil'] = {
+                  formatting = {
+                    command = { "nixpkgs-fmt" },
+                  },
+                },
+              },
+            }
 
             lsp.rust_analyzer.setup{
               on_attach = on_attach,
@@ -199,8 +208,6 @@ with inputs.nix-colors.lib-contrib { inherit pkgs; };
 
                 null_ls.builtins.formatting.buildifier,
                 null_ls.builtins.diagnostics.buildifier,
-
-                null_ls.builtins.diagnostics.cfn_lint,
 
                 null_ls.builtins.formatting.buf,
                 null_ls.builtins.diagnostics.buf,

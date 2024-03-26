@@ -1,9 +1,9 @@
-data "cloudflare_zone" "ar3s3ru-dev" {
-  name = "ar3s3ru.dev"
+data "tailscale_device" "dejima_ar3s3ru_dev" {
+  hostname = "dejima.ar3s3ru.dev"
 }
 
-locals {
-  dejima_intranet_ip_addr = "100.64.0.7"
+data "cloudflare_zone" "ar3s3ru-dev" {
+  name = "ar3s3ru.dev"
 }
 
 resource "cloudflare_record" "dejima_intranet_resources" {
@@ -16,5 +16,5 @@ resource "cloudflare_record" "dejima_intranet_resources" {
   zone_id = data.cloudflare_zone.ar3s3ru-dev.id
   comment = "This service must only be exposed through my private Tailnet."
   type    = "A"
-  value   = local.dejima_intranet_ip_addr
+  value   = data.tailscale_device.dejima_ar3s3ru_dev.addresses[0]
 }

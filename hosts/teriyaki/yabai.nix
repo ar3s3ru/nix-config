@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ ... }:
 let
   yabai = "/opt/homebrew/bin/yabai";
 in
@@ -46,8 +46,6 @@ in
 
   home.file.skhd =
     let
-      brew = "/opt/homebrew/bin/brew";
-
       mod = "alt";
 
       left = "j";

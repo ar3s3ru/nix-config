@@ -1,8 +1,8 @@
-{ config, lib, nixosConfig, pkgs, colorscheme, ... }:
+{ lib, pkgs, colorscheme, ... }:
 
 {
   # Theming using nix-colors and base16 style.
-  xdg.configFile."waybar/colors.css".text = with colorscheme.colors; ''
+  xdg.configFile."waybar/colors.css".text = with colorscheme.palette; ''
     @define-color base00 #${base00};
     @define-color base01 #${base01};
     @define-color base02 #${base02};
