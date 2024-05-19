@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, ... }:
 let
   mkCloudflareDdnsSerivce = pkgs.callPackage ../../services/mk-cloudflare-ddns.nix { };
 in

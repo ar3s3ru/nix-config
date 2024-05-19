@@ -41,7 +41,7 @@ host/dejima.ar3s3ru.dev:
 	$(MAKE) host/deploy host=dejima user=root hostname=dejima.ar3s3ru.dev
 
 host/momonoke.ar3s3ru.dev:
-	$(MAKE) host/deploy host=momonoke user=$(user) hostname=192.168.1.130
+	$(MAKE) host/deploy host=momonoke user=$(user) hostname=192.168.2.109
 
 # Local run -------------------------------------------------------------------
 

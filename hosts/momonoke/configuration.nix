@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   time.timeZone = "Europe/Berlin";
@@ -20,6 +20,9 @@
     keyMap = lib.mkForce "us";
     useXkbConfig = true; # use xkb.options in tty.
   };
+
+  # Avoids switching off power and network when the lid is closed.
+  services.logind.lidSwitchExternalPower = "ignore";
 
   # Disable documentation, we don't need it on servers anyway
   documentation.enable = false;
