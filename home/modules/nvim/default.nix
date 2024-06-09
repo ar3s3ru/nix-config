@@ -17,7 +17,7 @@ with inputs.nix-colors.lib-contrib { inherit pkgs; };
     # neovide
     # Nix
     nil
-    nixfmt
+    nixpkgs-fmt
     # Lua
     stylua
     # Terraform
