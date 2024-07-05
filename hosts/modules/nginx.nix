@@ -10,11 +10,9 @@
       group = config.services.nginx.group;
       dnsProvider = "cloudflare";
       environmentFile = "/var/lib/acme/environment"; # NOTE: this file must be added manually!
+      dnsResolver = "1.1.1.1:53";
       dnsPropagationCheck = true;
-      extraLegoFlags = [ "--dns.resolvers=1.1.1.1:53" ];
     };
-
-    certs."ar3s3ru.dev" = { };
   };
 
   services.nginx = {

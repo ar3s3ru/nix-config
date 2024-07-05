@@ -12,15 +12,13 @@
     rpc-host-whitelist-enabled = false;
   };
 
-  security.acme.certs."ar3s3ru.dev".extraDomainNames = [
-    "transmission.ar3s3ru.dev"
-  ];
+  security.acme.certs."transmission.ar3s3ru.dev" = { };
 
   # Expose the Transmission WebUI through NGINX,
   # this avoids the need for opening ports on the router.
   services.nginx.virtualHosts."transmission.ar3s3ru.dev" = {
     forceSSL = true;
-    useACMEHost = "ar3s3ru.dev";
+    useACMEHost = "transmission.ar3s3ru.dev";
 
     locations."/" = {
       proxyPass = "http://localhost:9091";

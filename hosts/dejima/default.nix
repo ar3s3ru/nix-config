@@ -18,12 +18,12 @@ nixpkgs.lib.nixosSystem {
     ../modules/gpg.nix
     ../modules/firewall.nix
     ../modules/openssh.nix
+    ../modules/nginx.nix
+    ../modules/user-default.nix
     ./hardware-configuration.nix
     ./configuration.nix
     ./disko.nix
-    ./ddns.nix
     ./tailscale.nix
-    ./nginx.nix
     ./jellyfin.nix
     ./nvidia.nix
     ./transmission.nix

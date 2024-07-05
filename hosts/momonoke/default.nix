@@ -26,9 +26,10 @@ nixpkgs.lib.nixosSystem {
     ../modules/openssh.nix
     ../modules/podman.nix
     ../modules/ios.nix
+    ../modules/nginx.nix
+    ../modules/user-default.nix
     ./hardware-configuration.nix
     ./configuration.nix
-    ./nginx.nix
     ./tailscale.nix
     ./home-assistant.nix
     {
