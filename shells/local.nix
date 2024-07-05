@@ -3,6 +3,7 @@
 , terraform
 , terragrunt
 , nil
+, kubectl
 , mkShell
 }:
 
@@ -19,5 +20,8 @@ mkShell {
 
     # Linters
     nil
+
+    # Temporarily for Kubernetes
+    kubectl
   ];
 }

@@ -87,4 +87,24 @@ in
       };
     };
   };
+
+  # Western Digital Red 3TB HDD.
+  # Used for storing large objects that do not require fast access times,
+  # such as photos, videos, etc.
+  fileSystems."/files" = {
+    device = "/dev/disk/by-uuid/7811f863-87b6-4926-8443-147d9fcdf004";
+    options = [
+      # If you don't have this options attribute, it'll default to "defaults"
+      # boot options for fstab. Search up fstab mount options you can use
+      "nofail" # Prevent system from failing if this drive doesn't mount
+    ];
+  };
+  # disko.devices.disk.sda = {
+  #   type = "disk";
+  #   device = "/dev/disk/by-id/ata-WDC_WD30EFRX-68EUZN0_WD-WCC4N2UCEJ17";
+  #   content = {
+  #     type = "gpt";
+  #     partitions = {};
+  #   };
+  # };
 }

@@ -13,7 +13,6 @@ nixpkgs.lib.nixosSystem {
     ../modules/nixpkgs.nix
     ../modules/fish.nix
     ../modules/power-management.nix
-    ../modules/podman.nix
     ../modules/neovim.nix
     ../modules/bluetooth.nix
     ../modules/gpg.nix
@@ -26,10 +25,10 @@ nixpkgs.lib.nixosSystem {
     ./tailscale.nix
     ./nginx.nix
     ./jellyfin.nix
-    ./jellyseerr.nix
     ./nvidia.nix
     ./transmission.nix
     ./group-media.nix
     ./direnv.nix
+    ./kubernetes
   ];
 }

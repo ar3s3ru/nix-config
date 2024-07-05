@@ -30,6 +30,7 @@ nixpkgs.lib.nixosSystem {
     ./configuration.nix
     ./nginx.nix
     ./tailscale.nix
+    ./home-assistant.nix
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;

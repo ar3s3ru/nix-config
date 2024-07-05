@@ -2,9 +2,8 @@
 
 {
   # Enable OpenGL
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
+  hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
 
   # Modesetting is required.
   hardware.nvidia.modesetting.enable = true;

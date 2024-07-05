@@ -11,6 +11,10 @@
     jellyfin-ffmpeg
   ];
 
+  security.acme.certs."ar3s3ru.dev".extraDomainNames = [
+    "jellyfin.ar3s3ru.dev"
+  ];
+
   # Expose the Plex server through NGINX, this avoids the need for opening ports
   # on the router.
   services.nginx.virtualHosts."jellyfin.ar3s3ru.dev" = {

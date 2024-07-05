@@ -66,8 +66,7 @@
   #   NSDocumentSaveNewDocumentsToCloud = false;
   # };
 
-  fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     nerdfonts
     terminus_font
     terminus_font_ttf

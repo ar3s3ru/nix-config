@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 let
-  mkCloudflareDdnsSerivce = pkgs.callPackage ../../services/mk-cloudflare-ddns.nix { };
+  mkCloudflareDdnsSerivce = pkgs.callPackage ../modules/services/mk-cloudflare-ddns.nix { };
 in
 {
   systemd.services."ddns-dejima.ar3s3ru.dev" = mkCloudflareDdnsSerivce {

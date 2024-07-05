@@ -6,16 +6,15 @@
 
     defaults = {
       email = "danilocianfr+letsencrypt@gmail.com";
+      server = "https://acme-v02.api.letsencrypt.org/directory";
       group = config.services.nginx.group;
       dnsProvider = "cloudflare";
       environmentFile = "/var/lib/acme/environment"; # NOTE: this file must be added manually!
       dnsPropagationCheck = true;
-      extraLegoFlags = [ "--dns.resolvers=8.8.8.8:53" ];
+      extraLegoFlags = [ "--dns.resolvers=1.1.1.1:53" ];
     };
 
-    certs."ar3s3ru.dev" = {
-      dnsPropagationCheck = false;
-    };
+    certs."ar3s3ru.dev" = { };
   };
 
   services.nginx = {
@@ -29,5 +28,11 @@
 
     # Only allow PFS-enabled ciphers with AES256
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
+
+    commonHttpConfig = ''
+      log_format myformat '$remote_addr - $remote_user [$time_local] '
+                          '"$request" $status $body_bytes_sent '
+                          '"$http_referer" "$http_user_agent"';
+    '';
   };
 }
