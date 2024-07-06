@@ -26,7 +26,8 @@ resource "cloudflare_record" "dejima_intranet_resources" {
 
 resource "cloudflare_record" "momonoke_intranet_resources" {
   for_each = toset([
-    "berlin.home"
+    "berlin.home",
+    "k8s.momonoke"
   ])
 
   name    = each.key

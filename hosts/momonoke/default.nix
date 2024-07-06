@@ -24,7 +24,6 @@ nixpkgs.lib.nixosSystem {
     ../modules/gpg.nix
     ../modules/firewall.nix
     ../modules/openssh.nix
-    ../modules/podman.nix
     ../modules/ios.nix
     ../modules/nginx.nix
     ../modules/user-default.nix
@@ -32,6 +31,7 @@ nixpkgs.lib.nixosSystem {
     ./configuration.nix
     ./tailscale.nix
     ./home-assistant.nix
+    ./kubernetes.nix
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
