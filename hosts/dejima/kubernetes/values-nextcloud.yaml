@@ -1,0 +1,19 @@
+nextcloud:
+  host: nextcloud.tail2ff90.ts.net
+
+ingress:
+  enabled: false
+
+cronjob:
+  enabled: true
+
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+
+persistence:
+  enabled: true
+  nextcloudData:
+    enabled: true
+    existingClaim: nextcloud-pvc
