@@ -14,6 +14,14 @@ in
     runc
   ];
 
+  # Increase the number of open files to help with Kubernetes shenanigans,
+  # like log collection and so on.
+  systemd.services."user@1000".serviceConfig.LimitNOFILE = "32768";
+  security.pam.loginLimits = [
+    { domain = "*"; item = "nofile"; type = "-"; value = "32768"; }
+    { domain = "*"; item = "memlock"; type = "-"; value = "32768"; }
+  ];
+
   virtualisation.docker.enable = true;
 
   security.acme.certs."${kubernetesHostname}" = { };
