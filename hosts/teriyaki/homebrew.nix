@@ -28,6 +28,7 @@
       "yabai"
       "skhd"
       "podman"
+      "stats"
     ];
 
     casks = [
