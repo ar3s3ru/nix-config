@@ -12,14 +12,15 @@ in
     kubernetes-helm
     docker
     runc
+    lsof # To inspect the number of open files.
   ];
 
   # Increase the number of open files to help with Kubernetes shenanigans,
   # like log collection and so on.
-  systemd.services."user@1000".serviceConfig.LimitNOFILE = "32768";
+  systemd.services."user@1000".serviceConfig.LimitNOFILE = "188898";
   security.pam.loginLimits = [
-    { domain = "*"; item = "nofile"; type = "-"; value = "32768"; }
-    { domain = "*"; item = "memlock"; type = "-"; value = "32768"; }
+    { domain = "*"; item = "nofile"; type = "-"; value = "188898"; }
+    { domain = "*"; item = "memlock"; type = "-"; value = "188898"; }
   ];
 
   virtualisation.docker.enable = true;

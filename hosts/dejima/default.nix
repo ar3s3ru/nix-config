@@ -22,6 +22,7 @@ nixpkgs.lib.nixosSystem {
     ../modules/user-default.nix
     ./hardware-configuration.nix
     ./configuration.nix
+    ./ddns.nix
     ./disko.nix
     ./tailscale.nix
     ./jellyfin.nix

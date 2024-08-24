@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   boot.extraModulePackages = with config.boot.kernelPackages; [
@@ -7,7 +7,11 @@
 
   services.home-assistant = {
     enable = true;
+    extraPackages = ps: with pkgs.python3Packages; [
+      idasen_ha
+    ];
     extraComponents = [
+      "camera"
       "android_ip_webcam"
       "rtsp_to_webrtc"
       "onvif"
@@ -16,6 +20,7 @@
       "govee_ble"
       "google_translate"
       "xiaomi_ble"
+      "idasen_desk"
     ];
     config = {
       default_config = { };

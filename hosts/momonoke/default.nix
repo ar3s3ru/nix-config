@@ -29,6 +29,7 @@ nixpkgs.lib.nixosSystem {
     ../modules/user-default.nix
     ./hardware-configuration.nix
     ./configuration.nix
+    ./ddns.nix
     ./tailscale.nix
     ./home-assistant.nix
     ./kubernetes.nix
