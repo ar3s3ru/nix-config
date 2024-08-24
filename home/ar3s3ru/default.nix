@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ lib, pkgs, inputs, ... }:
 
 {
   home.username = "ar3s3ru";
@@ -25,6 +25,7 @@
     ../modules/git.nix
     ../modules/ssh.nix
     ../modules/vscode.nix
+    ../modules/tmux.nix
   ];
 
   programs = {
