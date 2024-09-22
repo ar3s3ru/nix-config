@@ -1,34 +1,30 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
+  # Home Assistant prefers dbus-broker for the DBus protocol and using Bluetooth.
+  services.dbus.implementation = "broker";
+
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
   ];
 
-  services.home-assistant = {
-    enable = true;
-    extraPackages = ps: with pkgs.python3Packages; [
-      idasen_ha
-    ];
-    extraComponents = [
-      "camera"
-      "android_ip_webcam"
-      "rtsp_to_webrtc"
-      "onvif"
-      "ibeacon"
-      "switchbot"
-      "govee_ble"
-      "google_translate"
-      "xiaomi_ble"
-      "idasen_desk"
-    ];
-    config = {
-      default_config = { };
-      http = {
-        use_x_forwarded_for = true;
-        trusted_proxies = [ "127.0.0.1" "::1" ];
-      };
+  virtualisation.oci-containers.containers.home-assistant = {
+    image = "ghcr.io/home-assistant/home-assistant:2024.8.2";
+    environment = {
+      TZ = "Europe/Berlin";
     };
+    extraOptions = [
+      "--privileged"
+    ];
+    ports = [
+      "0.0.0.0:8123:8123"
+    ];
+    volumes = [
+      "/var/lib/home-assistant:/config"
+      "/dev:/dev"
+      "/run/udev:/run/udev"
+      "/run/dbus:/run/dbus:ro"
+    ];
   };
 
   security.acme.certs."berlin.home.ar3s3ru.dev" = { };

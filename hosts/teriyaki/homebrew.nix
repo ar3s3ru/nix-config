@@ -28,13 +28,13 @@
       "yabai"
       "skhd"
       "podman"
-      "stats"
     ];
 
     casks = [
       "dbeaver-community"
       "podman-desktop"
       "whatsapp"
+      "stats"
     ];
 
     taps = [
