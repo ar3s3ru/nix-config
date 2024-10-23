@@ -15,6 +15,7 @@ resource "cloudflare_record" "dejima_intranet_resources" {
     "transmission",
     "jellyseerr",
     "k8s.dejima",
+    "secrets"
   ])
 
   name    = each.key

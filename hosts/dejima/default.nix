@@ -30,6 +30,7 @@ nixpkgs.lib.nixosSystem {
     ./transmission.nix
     ./group-media.nix
     ./direnv.nix
+    ./microbin.nix
     ./kubernetes
   ];
 }
