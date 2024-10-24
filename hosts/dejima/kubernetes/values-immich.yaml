@@ -1,10 +1,6 @@
 ---
-immich:
-  persistence:
-    library:
-      existingClaim: immich-pvc
-  metrics:
-    enabled: true
+image:
+  tag: v1.118.2
 
 server:
   ingress:
@@ -17,10 +13,21 @@ server:
             - path: "/"
       tls:
         - hosts:
-          - immich
+            - immich
 
 postgresql:
   enabled: true
 
 redis:
   enabled: true
+
+immich:
+  persistence:
+    library:
+      existingClaim: immich-pvc
+  metrics:
+    enabled: true
+  configuration:
+    logging:
+      enabled: true
+      level: log

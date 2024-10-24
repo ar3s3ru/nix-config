@@ -1,9 +1,14 @@
-{ lib, buildGo121Module, fetchFromGitHub, pkgs }:
+{ lib
+, buildGo123Module
+, fetchFromGitHub
+}:
+
 let
   name = "cloudflare-ddns";
   version = "1.11.0";
 in
-buildGo121Module {
+
+buildGo123Module {
   pname = name;
   inherit version;
 

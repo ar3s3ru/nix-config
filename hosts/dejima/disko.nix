@@ -1,7 +1,10 @@
 let
-  mkExt4Partition = (mountpoint: {
+  ext4Partition = {
     type = "filesystem";
     format = "ext4";
+  };
+
+  mkExt4Partition = (mountpoint: ext4Partition // {
     inherit mountpoint;
   });
 in
@@ -83,6 +86,7 @@ in
         # Unpartitioned, we can use it to mount it on a VM.
         vm-slow = {
           size = "100%";
+          content = ext4Partition;
         };
       };
     };

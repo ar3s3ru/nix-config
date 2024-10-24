@@ -9,7 +9,7 @@
   ];
 
   virtualisation.oci-containers.containers.home-assistant = {
-    image = "ghcr.io/home-assistant/home-assistant:2024.8.2";
+    image = "ghcr.io/home-assistant/home-assistant:2024.10.3";
     environment = {
       TZ = "Europe/Berlin";
     };
