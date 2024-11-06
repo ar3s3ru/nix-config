@@ -6,6 +6,8 @@
     nur.url = "github:nix-community/NUR";
     flake-utils.url = "github:numtide/flake-utils";
 
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
