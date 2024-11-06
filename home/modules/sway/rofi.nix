@@ -1,4 +1,4 @@
-{ config, lib, pkgs, colorscheme, ... }:
+{ config, pkgs, colorscheme, ... }:
 let
   # To write strings in the configuration without double quotes.
   inherit (config.lib.formats.rasi) mkLiteral;
@@ -25,7 +25,7 @@ in
     theme = {
       "@import" = "gruvbox-dark.rasi";
 
-      "*" = with colorscheme.colors; {
+      "*" = with colorscheme.palette; {
         red = mkLiteral "#${base08}";
         blue = mkLiteral "#${base0D}";
         lightfg = mkLiteral "#${base06}";

@@ -1,4 +1,4 @@
-{ nixosConfig, ... }:
+{ ... }:
 
 {
   services.gammastep = {

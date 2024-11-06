@@ -211,7 +211,7 @@ in
         })
         workspaces));
 
-      colors = with colorscheme.colors; {
+      colors = with colorscheme.palette; {
         focused = {
           border = "#${base05}";
           background = "#${base05}";

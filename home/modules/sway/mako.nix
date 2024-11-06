@@ -1,7 +1,7 @@
-{ config, pkgs, colorscheme, ... }:
+{ pkgs, colorscheme, ... }:
 
 {
-  services.mako = with colorscheme.colors; {
+  services.mako = with colorscheme.palette; {
     enable = true;
 
     font = "MesloLGS NF 10";

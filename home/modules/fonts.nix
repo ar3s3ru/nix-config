@@ -1,4 +1,4 @@
-{ config, pkgs, libs, ... }:
+{ pkgs, ... }:
 
 {
   fonts.fontconfig.enable = true;
@@ -17,6 +17,6 @@
     font-awesome
 
     # Use a font viewer to check that shit is working properly.
-    gnome.gnome-font-viewer
+    gnome-font-viewer
   ];
 }

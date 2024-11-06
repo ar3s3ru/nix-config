@@ -1,0 +1,22 @@
+{ lib, ... }:
+
+{
+  imports = [
+    ../../home/ar3s3ru
+    ../../home/modules/sway
+    ../../home/modules/gpg-linux.nix
+    ../../home/modules/firefox.nix
+    ../../home/modules/fonts.nix
+    ../../home/modules/slack.nix
+  ];
+
+  programs.alacritty.settings.font = {
+    size = 10;
+    normal.family = "MesloLGS NF";
+  };
+
+  programs.vscode.userSettings = {
+    "editor.fontFamily" = lib.mkForce "'MesloLGS NF'";
+    "editor.fontSize" = 14;
+  };
+}

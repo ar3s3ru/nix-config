@@ -1,4 +1,4 @@
-{ nixpkgs, nixos-hardware, home-manager, disko, nix-colors, nur, ... }:
+{ nixpkgs, nixos-hardware, home-manager, disko, nix-colors, nur, ... }@inputs:
 let
   nur-overlay = {
     nixpkgs.overlays = [ nur.overlay ];
@@ -18,14 +18,29 @@ nixpkgs.lib.nixosSystem {
     ../modules/nixpkgs.nix
     ../modules/fish.nix
     ../modules/power-management.nix
+    ../modules/podman.nix
     ../modules/bluetooth.nix
+    ../modules/pipewire.nix
     ../modules/neovim.nix
     ../modules/gpg.nix
     ../modules/firewall.nix
     ../modules/openssh.nix
     ../modules/ios.nix
     ../modules/user-default.nix
+    ./hardware-configuration.nix
     ./configuration.nix
     ./disko.nix
+    ./tailscale.nix
+    {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users.ar3s3ru = import ./user-ar3s3ru.nix;
+
+      home-manager.extraSpecialArgs.inputs = inputs;
+      home-manager.extraSpecialArgs.colorscheme = nix-colors.colorSchemes.monokai;
+      home-manager.extraSpecialArgs.wallpaper = ../../wallpapers/majelletta.jpg;
+      home-manager.extraSpecialArgs.ssh.private-key = ./secrets/id_ed25519;
+      home-manager.extraSpecialArgs.ssh.public-key = ./id_ed25519.pub;
+    }
   ];
 }
