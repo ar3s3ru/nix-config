@@ -31,6 +31,7 @@
       nixosConfigurations = {
         momonoke = import ./hosts/momonoke inputs;
         dejima = import ./hosts/dejima inputs;
+        polus = import ./hosts/polus inputs;
       };
 
       darwinConfigurations = {
