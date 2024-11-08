@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -8,6 +8,11 @@
     ../../home/modules/firefox.nix
     ../../home/modules/fonts.nix
     ../../home/modules/slack.nix
+    ./user-picnic-java.nix
+  ];
+
+  home.packages = with pkgs; [
+    telegram-desktop
   ];
 
   programs.alacritty.settings.font = {

@@ -31,6 +31,8 @@ nixpkgs.lib.nixosSystem {
     ./configuration.nix
     ./disko.nix
     ./tailscale.nix
+    ./picnic-vpn.nix
+    ./java.nix
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;

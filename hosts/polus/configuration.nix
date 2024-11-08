@@ -29,6 +29,9 @@
     killall
     unzip
     pciutils
+    networkmanagerapplet
+    powertop
+    sof-firmware # Needed to get the headphones audio working.
   ];
 
   users.users.ar3s3ru = {
