@@ -27,11 +27,13 @@ nixpkgs.lib.nixosSystem {
     ../modules/openssh.nix
     ../modules/ios.nix
     ../modules/user-default.nix
+    ../modules/printer.nix
     ./hardware-configuration.nix
     ./configuration.nix
     ./disko.nix
     ./tailscale.nix
     ./picnic-vpn.nix
+    ./picnic-printer.nix
     ./java.nix
     {
       home-manager.useGlobalPkgs = true;
