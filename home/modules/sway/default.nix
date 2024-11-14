@@ -86,6 +86,11 @@ in
 
     # General configuration.
     config = {
+      left = "j";
+      right = "l";
+      up = "i";
+      down = "k";
+
       modifier = lib.mkDefault "Mod4";
       terminal = lib.mkDefault "${pkgs.alacritty}/bin/alacritty";
       menu = "rofi -show run | ${pkgs.findutils}/bin/xargs ${pkgs.sway}/bin/swaymsg exec";
