@@ -13,6 +13,10 @@
     useXkbConfig = true; # use xkb.options in tty.
   };
 
+  # After hibernation and reboot, nixos-rebuild switch fails with
+  # "Failed to read EFI variable" -> this should fix that issue.
+  boot.loader.efi.canTouchEfiVariables = false;
+
   # Better disk mounting.
   services.udisks2.enable = true;
 
