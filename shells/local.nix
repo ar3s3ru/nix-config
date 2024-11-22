@@ -1,9 +1,11 @@
 { unixtools
 , gnumake
+, git
 , terraform
 , terragrunt
 , nil
 , kubectl
+, k9s
 , mkShell
 }:
 
@@ -11,6 +13,7 @@ mkShell {
   name = "default";
   packages = [
     # Nice utilities.
+    git
     unixtools.watch
     gnumake
 
@@ -23,5 +26,6 @@ mkShell {
 
     # Temporarily for Kubernetes
     kubectl
+    k9s
   ];
 }
