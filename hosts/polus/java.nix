@@ -3,7 +3,9 @@
 {
   environment.systemPackages = with pkgs; [
     jetbrains.idea-community-bin
-    jdk # Should be OpenJDK 21
     maven
   ];
+
+  programs.java.enable = true;
+  programs.java.package = pkgs.jdk21;
 }

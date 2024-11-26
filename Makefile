@@ -60,6 +60,9 @@ system/momonoke:
 system/teriyaki:
 	$(MAKE) darwin host=teriyaki
 
+system/polus:
+	$(MAKE) nixos host=polus
+
 # Nix -------------------------------------------------------------------------
 
 flake.update:

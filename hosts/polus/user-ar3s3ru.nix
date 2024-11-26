@@ -9,6 +9,7 @@
     ../../home/modules/fonts.nix
     ../../home/modules/slack.nix
     ./user-picnic-java.nix
+    ./user-picnic-python.nix
   ];
 
   home.packages = with pkgs; [

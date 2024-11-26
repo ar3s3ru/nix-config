@@ -18,7 +18,6 @@ nixpkgs.lib.nixosSystem {
     ../modules/nixpkgs.nix
     ../modules/fish.nix
     ../modules/power-management.nix
-    ../modules/podman.nix
     ../modules/bluetooth.nix
     ../modules/pipewire.nix
     ../modules/neovim.nix
@@ -31,6 +30,7 @@ nixpkgs.lib.nixosSystem {
     ./hardware-configuration.nix
     ./configuration.nix
     ./disko.nix
+    ./docker.nix
     ./tailscale.nix
     ./picnic-vpn.nix
     ./picnic-printer.nix
