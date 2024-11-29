@@ -4,6 +4,7 @@
   imports = [
     ../../home/ar3s3ru
     ../../home/modules/sway
+    ../../home/modules/gtk.nix
     ../../home/modules/gpg-linux.nix
     ../../home/modules/firefox.nix
     ../../home/modules/fonts.nix

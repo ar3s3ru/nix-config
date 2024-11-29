@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
     gthumb
-    gnome.nautilus
-    gnome.file-roller
+    nautilus
+    file-roller
     commonsCompress
   ];
 
@@ -18,7 +18,7 @@
     };
 
     iconTheme = {
-      package = pkgs.gnome3.adwaita-icon-theme;
+      package = pkgs.adwaita-icon-theme;
       name = "Adwaita";
     };
 
