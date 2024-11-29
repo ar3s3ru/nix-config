@@ -36,6 +36,7 @@ in
     swaylock # To lock the screen.
     wl-clipboard # For wl-paste and wl-copy utilities.
     grim # Take screenshots
+    swaynotificationcenter # Sends notifications
 
     # NOTE: if you need Chromium, this is how you should do it!
     # Make sure to enable the WebRTC Pipewire Capturer flag for screensharing!

@@ -7,7 +7,7 @@
     ../../home/modules/waybar
     ../../home/modules/gammastep.nix
     ../../home/modules/kanshi.nix
-    ../../home/modules/mako.nix
+    ../../home/modules/swaync.nix
     ../../home/modules/rofi.nix
     ../../home/modules/xdg-desktop-portal.nix
     ../../home/modules/gtk.nix
