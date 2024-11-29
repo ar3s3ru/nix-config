@@ -20,15 +20,6 @@ let
   clamshellScript = ./clamshell.sh;
 in
 {
-  imports = [
-    ./waybar
-    ./gammastep.nix
-    ./kanshi.nix
-    ./mako.nix
-    ./rofi.nix
-    ./xdg-desktop-portal.nix
-  ];
-
   home.sessionVariables = {
     # Java acts like a bit of a bitch on Wayland, these settings
     # are required for Java-based UIs.
