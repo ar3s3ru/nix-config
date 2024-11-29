@@ -162,7 +162,7 @@ with inputs.nix-colors.lib-contrib { inherit pkgs; };
             }
 
             -- For some reason, tsserver requires some explicit path setting.
-            lsp.tsserver.setup{
+            lsp.ts_ls.setup{
               on_attach = function(client, bufnr)
                 on_attach(client, bufnr)
 
