@@ -41,6 +41,7 @@ in
   programs.vscode.mutableExtensionsDir = true;
 
   programs.vscode.extensions = with pkgs.vscode-extensions; [
+    ms-python.python
     tamasfe.even-better-toml
     eamodio.gitlens
     golang.go

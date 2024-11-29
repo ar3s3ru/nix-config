@@ -13,10 +13,6 @@
     useXkbConfig = true; # use xkb.options in tty.
   };
 
-  # After hibernation and reboot, nixos-rebuild switch fails with
-  # "Failed to read EFI variable" -> this should fix that issue.
-  boot.loader.efi.canTouchEfiVariables = false;
-
   # Better disk mounting.
   services.udisks2.enable = true;
 
@@ -36,6 +32,8 @@
     networkmanagerapplet
     powertop
     sof-firmware # Needed to get the headphones audio working.
+    python3
+    nodejs_18
   ];
 
   users.users.ar3s3ru = {
