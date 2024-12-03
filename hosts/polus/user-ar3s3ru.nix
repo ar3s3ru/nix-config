@@ -4,10 +4,10 @@
   imports = [
     ../../home/ar3s3ru
     ../../home/modules/sway
+    ../../home/modules/swaync
     ../../home/modules/waybar
     ../../home/modules/gammastep.nix
     ../../home/modules/kanshi.nix
-    ../../home/modules/swaync.nix
     ../../home/modules/rofi.nix
     ../../home/modules/xdg-desktop-portal.nix
     ../../home/modules/gtk.nix
