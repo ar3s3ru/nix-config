@@ -7,7 +7,6 @@
     ../../home/modules/swaync
     ../../home/modules/waybar
     ../../home/modules/gammastep.nix
-    ../../home/modules/kanshi.nix
     ../../home/modules/rofi.nix
     ../../home/modules/xdg-desktop-portal.nix
     ../../home/modules/gtk.nix
