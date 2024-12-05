@@ -33,7 +33,8 @@
     powertop
     sof-firmware # Needed to get the headphones audio working.
     python3
-    nodejs_18
+    nodejs
+    awscli2
   ];
 
   users.users.ar3s3ru = {
@@ -51,6 +52,7 @@
 
   # Enable Sway, but configuration is in the Home Manager flake.
   programs.sway.enable = true;
+  programs.regreet.enable = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

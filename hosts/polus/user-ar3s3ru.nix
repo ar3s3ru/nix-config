@@ -14,6 +14,7 @@
     ../../home/modules/firefox.nix
     ../../home/modules/fonts.nix
     ../../home/modules/slack.nix
+    ./user-spotify.nix
     ./user-picnic-java.nix
     ./user-picnic-python.nix
   ];
