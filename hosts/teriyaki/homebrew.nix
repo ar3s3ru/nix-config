@@ -32,7 +32,6 @@
 
     casks = [
       "dbeaver-community"
-      "podman-desktop"
       "whatsapp"
       "stats"
     ];
