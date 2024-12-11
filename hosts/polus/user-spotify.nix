@@ -1,10 +1,9 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
-  home.packages = with pkgs; [
-    ncspot
-    spotify-tui
-  ];
-
-  services.spotifyd.enable = true;
+  programs.ncspot.enable = true;
+  programs.ncspot.settings = {
+    notify = true;
+    shuffle = true;
+  };
 }
