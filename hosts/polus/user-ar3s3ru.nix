@@ -17,6 +17,7 @@
     ./user-spotify.nix
     ./user-picnic-java.nix
     ./user-picnic-python.nix
+    ./user-picnic-fca.nix
   ];
 
   home.packages = with pkgs; [

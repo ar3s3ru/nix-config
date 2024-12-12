@@ -35,6 +35,7 @@ nixpkgs.lib.nixosSystem {
     ./picnic-vpn.nix
     ./picnic-printer.nix
     ./java.nix
+    ./mtp.nix
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;

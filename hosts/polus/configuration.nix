@@ -31,6 +31,7 @@
     pciutils
     networkmanagerapplet
     powertop
+    usbutils # For lsusb.
     sof-firmware # Needed to get the headphones audio working.
     python3
     nodejs
