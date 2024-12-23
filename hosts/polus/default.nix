@@ -27,6 +27,7 @@ nixpkgs.lib.nixosSystem {
     ../modules/ios.nix
     ../modules/user-default.nix
     ../modules/printer.nix
+    ../modules/fonts.nix
     ./hardware-configuration.nix
     ./configuration.nix
     ./disko.nix
@@ -36,6 +37,7 @@ nixpkgs.lib.nixosSystem {
     ./picnic-printer.nix
     ./java.nix
     ./mtp.nix
+    ./android-camera.nix
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
