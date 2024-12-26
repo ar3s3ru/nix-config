@@ -34,7 +34,17 @@ resource "cloudflare_record" "momonoke_intranet_resources" {
   name    = each.key
   zone_id = data.cloudflare_zone.ar3s3ru-dev.id
   comment = "This service must only be exposed through my private Tailnet."
-  type    = "CNAME"
-  value   = data.tailscale_device.momonoke_ar3s3ru_dev.name
+  type    = "A"
+  value   = data.tailscale_device.momonoke_ar3s3ru_dev.addresses[0]
 }
 
+resource "cloudflare_record" "momonoke_public_resources" {
+  for_each = toset([
+    "jellyfin2"
+  ])
+
+  name    = each.key
+  zone_id = data.cloudflare_zone.ar3s3ru-dev.id
+  type    = "CNAME"
+  value   = "momonoke.ar3s3ru.dev"
+}

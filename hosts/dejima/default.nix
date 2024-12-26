@@ -20,6 +20,7 @@ nixpkgs.lib.nixosSystem {
     ../modules/openssh.nix
     ../modules/nginx.nix
     ../modules/user-default.nix
+    ../modules/tmux.nix
     ./hardware-configuration.nix
     ./configuration.nix
     ./ddns.nix

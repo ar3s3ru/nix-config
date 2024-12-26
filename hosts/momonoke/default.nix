@@ -27,12 +27,14 @@ nixpkgs.lib.nixosSystem {
     ../modules/ios.nix
     ../modules/nginx.nix
     ../modules/user-default.nix
+    ../modules/tmux.nix
     ./hardware-configuration.nix
     ./configuration.nix
     ./ddns.nix
     ./tailscale.nix
     ./home-assistant.nix
     ./kubernetes.nix
+    ./jellyfin.nix
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;

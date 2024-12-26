@@ -22,7 +22,6 @@
     ../modules/git.nix
     ../modules/ssh.nix
     ../modules/vscode.nix
-    ../modules/tmux.nix
   ];
 
   programs = {
