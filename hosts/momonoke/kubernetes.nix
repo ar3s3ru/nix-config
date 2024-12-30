@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   kubernetesHostname = "k8s.momonoke.ar3s3ru.dev";
 in
@@ -13,14 +13,6 @@ in
     docker
     runc
     lsof # To inspect the number of open files.
-  ];
-
-  # Increase the number of open files to help with Kubernetes shenanigans,
-  # like log collection and so on.
-  systemd.services."user@1000".serviceConfig.LimitNOFILE = "188898";
-  security.pam.loginLimits = [
-    { domain = "*"; item = "nofile"; type = "-"; value = "188898"; }
-    { domain = "*"; item = "memlock"; type = "-"; value = "188898"; }
   ];
 
   virtualisation.docker.enable = true;
@@ -61,4 +53,9 @@ in
     role = "server";
     extraFlags = "--disable=traefik --tls-san=${kubernetesHostname}";
   };
+
+  # Disable limits for the number of open files by k3s containers,
+  # or the telemetry stack will complain.
+  systemd.services.k3s.serviceConfig.LimitNOFILE = lib.mkForce "infinity";
+  systemd.services.k3s.serviceConfig.LimitNOFILESoft = lib.mkForce "infinity";
 }

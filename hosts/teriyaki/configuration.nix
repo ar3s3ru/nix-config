@@ -67,7 +67,6 @@
   # };
 
   fonts.packages = with pkgs; [
-    nerdfonts
     terminus_font
     terminus_font_ttf
   ];
