@@ -1,7 +1,7 @@
 { nixpkgs, nixos-hardware, home-manager, disko, nix-colors, nur, ... }@inputs:
 let
   nur-overlay = {
-    nixpkgs.overlays = [ nur.overlay ];
+    nixpkgs.overlays = [ nur.overlays.default ];
   };
 in
 nixpkgs.lib.nixosSystem {

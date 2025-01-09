@@ -10,9 +10,9 @@
     # noto-fonts-cjk
     # noto-fonts-emoji
 
-    terminus-nerdfont
+    nerd-fonts.terminess-ttf
     terminus_font
-    terminus_font_ttf
+    # terminus_font_ttf
     papirus-icon-theme
     font-awesome
 

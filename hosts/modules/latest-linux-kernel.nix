@@ -11,4 +11,8 @@
   # Limit the number of available generations on the bootloader
   # to the latest 3.
   boot.loader.systemd-boot.configurationLimit = 3;
+
+  # Disable NetworkManager wait-online target, which always inevitably fails.
+  systemd.network.wait-online.enable = false;
+  boot.initrd.systemd.network.wait-online.enable = false;
 }

@@ -2,7 +2,7 @@
 let
   nur-overlay = {
     nixpkgs.overlays = [
-      nur.overlay
+      nur.overlays.default
     ];
   };
 in

@@ -35,7 +35,7 @@
     sof-firmware # Needed to get the headphones audio working.
     python3
     nodejs
-    awscli2
+    # awscli2
   ];
 
   users.users.ar3s3ru = {
