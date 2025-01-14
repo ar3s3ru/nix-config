@@ -25,20 +25,45 @@
     nixos-apple-silicon.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs:
-    let
-      shells = import ./shells inputs;
-    in
-    shells // {
-      nixosConfigurations = {
-        momonoke = import ./hosts/momonoke inputs;
-        dejima = import ./hosts/dejima inputs;
-        polus = import ./hosts/polus inputs;
-        terobaki = import ./hosts/terobaki inputs;
-      };
-
-      darwinConfigurations = {
-        teriyaki = import ./hosts/teriyaki inputs;
-      };
+  outputs = inputs@{ flake-utils, nixpkgs, ... }: {
+    nixosConfigurations = {
+      momonoke = import ./hosts/momonoke inputs;
+      dejima = import ./hosts/dejima inputs;
+      polus = import ./hosts/polus inputs;
+      terobaki = import ./hosts/terobaki inputs;
     };
+
+    darwinConfigurations = {
+      teriyaki = import ./hosts/teriyaki inputs;
+    };
+  } // (flake-utils.lib.eachDefaultSystem
+    (system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      in
+      {
+        devShells.default = with pkgs; mkShell {
+          name = "default";
+          packages = [
+            # Nice utilities.
+            git
+            unixtools.watch
+            gnumake
+
+            # Relevant packages to apply the configurations.
+            terraform
+            terragrunt
+
+            # Linters
+            nil
+
+            # Temporarily for Kubernetes
+            kubectl
+            k9s
+          ];
+        };
+      }));
 }
