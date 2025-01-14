@@ -9,21 +9,34 @@
   ];
 
   virtualisation.oci-containers.containers.home-assistant = {
-    image = "ghcr.io/home-assistant/home-assistant:2024.10.3";
+    image = "ghcr.io/home-assistant/home-assistant:2025.1.2";
     environment = {
       TZ = "Europe/Berlin";
     };
     extraOptions = [
       "--privileged"
-    ];
-    ports = [
-      "0.0.0.0:8123:8123"
+      "--network=host"
     ];
     volumes = [
       "/var/lib/home-assistant:/config"
       "/dev:/dev"
       "/run/udev:/run/udev"
       "/run/dbus:/run/dbus:ro"
+    ];
+  };
+
+  networking.firewall.allowedTCPPorts = [ 6052 ];
+
+  virtualisation.oci-containers.containers.esphome = {
+    image = "esphome/esphome";
+    extraOptions = [
+      "--privileged"
+      "--network=host"
+    ];
+    volumes = [
+      "/var/lib/esphome:/config"
+      "/etc/localtime:/etc/localtime:ro"
+      "/dev:/dev"
     ];
   };
 
