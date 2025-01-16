@@ -33,7 +33,6 @@ nixpkgs.lib.nixosSystem {
     ./ddns.nix
     ./disable-docked-sleep.nix
     ./tailscale.nix
-    ./home-assistant.nix
     ./kubernetes.nix
     ./jellyfin.nix
     {
