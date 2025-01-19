@@ -25,16 +25,14 @@ nixpkgs.lib.nixosSystem {
     ../modules/firewall.nix
     ../modules/openssh.nix
     ../modules/ios.nix
-    ../modules/nginx.nix
     ../modules/user-default.nix
     ../modules/tmux.nix
     ./hardware-configuration.nix
     ./configuration.nix
-    ./ddns.nix
     ./disable-docked-sleep.nix
     ./tailscale.nix
     ./kubernetes.nix
-    ./jellyfin.nix
+    ./intel-gpu-hw-acceleration.nix
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;

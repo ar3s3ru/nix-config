@@ -18,20 +18,15 @@ nixpkgs.lib.nixosSystem {
     ../modules/gpg.nix
     ../modules/firewall.nix
     ../modules/openssh.nix
-    ../modules/nginx.nix
     ../modules/user-default.nix
     ../modules/tmux.nix
     ./hardware-configuration.nix
     ./configuration.nix
-    ./ddns.nix
     ./disko.nix
     ./tailscale.nix
-    ./jellyfin.nix
     ./nvidia.nix
-    ./transmission.nix
     ./group-media.nix
     ./direnv.nix
-    ./microbin.nix
-    ./kubernetes
+    ./kubernetes.nix
   ];
 }

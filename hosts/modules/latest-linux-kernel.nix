@@ -12,6 +12,9 @@
   # to the latest 3.
   boot.loader.systemd-boot.configurationLimit = 3;
 
+  # Enable netboot.xyz for booting images over the network.
+  boot.loader.systemd-boot.netbootxyz.enable = true;
+
   # Disable NetworkManager wait-online target, which always inevitably fails.
   systemd.network.wait-online.enable = false;
   boot.initrd.systemd.network.wait-online.enable = false;

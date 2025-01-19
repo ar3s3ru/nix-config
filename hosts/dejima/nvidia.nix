@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   # Enable OpenGL
@@ -30,4 +30,14 @@
 
   # Optionally, you may need to select the appropriate driver version for your specific GPU.
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+  # Pass the GPU to Docker and Kubernetes.
+  hardware.nvidia-container-toolkit.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    libva-utils
+    vdpauinfo
+    jellyfin-ffmpeg
+    clinfo
+  ];
 }

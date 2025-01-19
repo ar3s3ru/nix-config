@@ -1,7 +1,5 @@
 { pkgs, lib, config, ... }:
-let
-  kubernetesHostname = "k8s.momonoke.ar3s3ru.dev";
-in
+
 {
   # Add the necessary packages for the Kubernetes experience.
   environment.systemPackages = with pkgs; [
@@ -16,18 +14,6 @@ in
   ];
 
   virtualisation.docker.enable = true;
-
-  security.acme.certs."${kubernetesHostname}" = { };
-
-  services.nginx.virtualHosts."${kubernetesHostname}" = {
-    onlySSL = true;
-    useACMEHost = kubernetesHostname;
-
-    locations."/" = {
-      proxyPass = "https://localhost:6443";
-      proxyWebsockets = true;
-    };
-  };
 
   environment.variables = {
     KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
@@ -47,11 +33,13 @@ in
       - "eviction-hard=memory.available<500Mi,nodefs.available<1Gi"
   '';
 
+  # Allow ingress traffic to Traefik on Kubernetes.
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
+
   # Kubernetes through K3S.
   services.k3s = {
     enable = true;
     role = "server";
-    extraFlags = "--disable=traefik --tls-san=${kubernetesHostname}";
   };
 
   # Disable limits for the number of open files by k3s containers,
