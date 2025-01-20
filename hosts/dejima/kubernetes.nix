@@ -21,7 +21,7 @@
   #
   # You can connect to the k8s cluster through the VPN hostname and port 6443.
   # Remember to use `insecure-skip-tls-verify: true` to make it work.
-  networking.firewall.interfaces."ens3".allowedTCPPorts = [ 6443 ];
+  networking.firewall.interfaces.eno1.allowedTCPPorts = [ 80 443 6443 ];
 
   environment.variables = {
     KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
