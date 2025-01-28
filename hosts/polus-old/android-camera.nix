@@ -16,8 +16,11 @@
   ];
 
   boot.extraModprobeConfig = ''
-    options v4l2loopback card_label="Android Virtual Webcam" exclusive_caps=1
+    options v4l2loopback devices=1 video_nr=4 card_label="Droidcam" exclusive_caps=1
   '';
 
   security.polkit.enable = true;
+
+  programs.droidcam.enable = true;
+  services.usbmuxd.enable = true;
 }
