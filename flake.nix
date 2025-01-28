@@ -29,12 +29,12 @@
     nixosConfigurations = {
       momonoke = import ./hosts/momonoke inputs;
       dejima = import ./hosts/dejima inputs;
-      polus = import ./hosts/polus inputs;
       terobaki = import ./hosts/terobaki inputs;
     };
 
     darwinConfigurations = {
       teriyaki = import ./hosts/teriyaki inputs;
+      polus = import ./hosts/polus inputs;
     };
   } // (flake-utils.lib.eachDefaultSystem
     (system:
