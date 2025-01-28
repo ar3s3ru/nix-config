@@ -33,6 +33,7 @@
     casks = [
       "whatsapp"
       "stats"
+      "firefox"
     ];
 
     taps = [
