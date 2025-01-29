@@ -17,7 +17,8 @@ darwin.lib.darwinSystem {
     ../modules/fish.nix
     ./configuration.nix
     ./homebrew.nix
-    ./tailscale.nix
+    ./aerospace.nix
+    ./java.nix
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;

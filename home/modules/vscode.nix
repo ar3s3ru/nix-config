@@ -69,7 +69,7 @@ in
 
   programs.vscode.userSettings = {
     "editor.rulers" = [ 80 120 ];
-    "editor.fontFamily" = "'Font Awesome','Terminus (TTF)','monospace', monospace,'Droid Sans Mono', 'Droid Sans Fallback'";
+    "editor.fontFamily" = "'Font Awesome','Terminus (TTF)','monospace',monospace,'Droid Sans Mono','Droid Sans Fallback'";
     "editor.formatOnSave" = true;
     "editor.formatOnPaste" = true;
     "editor.suggestSelection" = "first";

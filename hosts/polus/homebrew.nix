@@ -25,8 +25,6 @@
     };
 
     brews = [
-      "yabai"
-      "skhd"
       "podman"
     ];
 
@@ -34,11 +32,6 @@
       "whatsapp"
       "stats"
       "firefox"
-    ];
-
-    taps = [
-      "cmacrae/formulae" # spacebar
-      "koekeishiya/formulae" # yabai
     ];
   };
 }
