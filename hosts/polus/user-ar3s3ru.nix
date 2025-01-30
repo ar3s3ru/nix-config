@@ -6,6 +6,7 @@ in
   imports = [
     ../../home/ar3s3ru
     ./gpg-darwin.nix
+    ./user-picnic-aws.nix
     ./user-picnic-java.nix
     ./user-picnic-python.nix
   ];

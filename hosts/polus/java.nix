@@ -10,5 +10,5 @@ in
     maven
   ];
 
-  environment.variables."JAVA_HOME" = "${java}/lib/openjdk";
+  environment.variables."JAVA_HOME" = "${java}/zulu-23.jdk/Contents/Home";
 }
