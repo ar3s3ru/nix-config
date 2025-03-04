@@ -9,7 +9,7 @@ in
 
   home.file."poetry-config" = {
     executable = false;
-    target = ".config/pypoetry/auth.toml";
+    target = "Library/Application Support/pypoetry/auth.toml";
     text = ''
       [http-basic.picnic]
       username = "dcianfrone"
