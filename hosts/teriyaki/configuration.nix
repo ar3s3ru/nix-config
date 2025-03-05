@@ -27,9 +27,6 @@
     ];
   };
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
   # Enable GnuPG Agent.
   # Please note, the actual agent config (e.g. pinentry)
   # is part of modules/gpg-darwin.nix.

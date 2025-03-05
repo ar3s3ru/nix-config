@@ -11,7 +11,7 @@ in
 
   programs.alacritty.settings.font.normal.family = font;
 
-  programs.vscode.userSettings = {
+  programs.vscode.profiles.default.userSettings = {
     "editor.fontFamily" = lib.mkForce "'${font}'";
     "editor.fontSize" = 14;
   };

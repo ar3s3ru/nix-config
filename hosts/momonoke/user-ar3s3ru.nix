@@ -11,7 +11,7 @@
     normal.family = "MesloLGS NF";
   };
 
-  programs.vscode.userSettings = {
+  programs.vscode.profiles.default.userSettings = {
     "editor.fontFamily" = lib.mkForce "'MesloLGS NF'";
     "editor.fontSize" = 14;
   };

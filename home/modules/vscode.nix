@@ -40,7 +40,7 @@ in
   programs.vscode.enable = true;
   programs.vscode.mutableExtensionsDir = true;
 
-  programs.vscode.extensions = with pkgs.vscode-extensions; [
+  programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
     ms-python.python
     tamasfe.even-better-toml
     eamodio.gitlens
@@ -67,7 +67,7 @@ in
     fwcd.kotlin
   ];
 
-  programs.vscode.userSettings = {
+  programs.vscode.profiles.default.userSettings = {
     "editor.rulers" = [ 80 120 ];
     "editor.fontFamily" = "'Font Awesome','Terminus (TTF)','monospace',monospace,'Droid Sans Mono','Droid Sans Fallback'";
     "editor.formatOnSave" = true;
