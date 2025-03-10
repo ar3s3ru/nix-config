@@ -43,6 +43,9 @@ host/dejima.ar3s3ru.dev:
 host/momonoke.ar3s3ru.dev:
 	$(MAKE) host/deploy host=momonoke user=$(user) hostname=momonoke-ar3s3ru-dev.tail2ff90.ts.net
 
+host/eq14-001.ar3s3ru.dev:
+	$(MAKE) host/deploy host=eq14-001 user=root hostname=192.168.2.38
+
 # Local run -------------------------------------------------------------------
 
 nixos:
@@ -62,6 +65,9 @@ system/teriyaki:
 
 system/polus:
 	$(MAKE) darwin host=polus
+
+system/eq14-001:
+	$(MAKE) nixos host=eq14-001
 
 # Nix -------------------------------------------------------------------------
 

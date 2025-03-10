@@ -7,6 +7,7 @@
     "--ssh"
     "--accept-dns"
     "--accept-risk=all"
-    "--hostname=terobaki.ar3s3ru.dev"
+    "--advertise-exit-node"
+    "--hostname=eq14-001"
   ];
 }

@@ -30,6 +30,7 @@
       momonoke = import ./hosts/momonoke inputs;
       dejima = import ./hosts/dejima inputs;
       terobaki = import ./hosts/terobaki inputs;
+      eq14-001 = import ./hosts/eq14-001 inputs;
     };
 
     darwinConfigurations = {
