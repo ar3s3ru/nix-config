@@ -1,5 +1,7 @@
 { pkgs, lib, config, ... }:
-
+let
+  clusterToken = lib.readFile ../secrets/nl-homelab-k3s-token;
+in
 {
   # Add the necessary packages for the Kubernetes experience.
   environment.systemPackages = with pkgs; [
@@ -34,12 +36,15 @@
   '';
 
   # Allow ingress traffic to Traefik on Kubernetes.
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 2379 2380 6443 ];
+  networking.firewall.allowedUDPPorts = [ 8472 ];
 
   # Kubernetes through K3S.
   services.k3s = {
     enable = true;
     role = "server";
+    token = clusterToken;
+    clusterInit = true;
   };
 
   # Disable limits for the number of open files by k3s containers,

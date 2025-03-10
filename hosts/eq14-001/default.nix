@@ -24,6 +24,6 @@ nixpkgs.lib.nixosSystem {
     ./configuration.nix
     ./disko.nix
     ./tailscale.nix
-    # ./kubernetes.nix
+    ./kubernetes.nix
   ];
 }
