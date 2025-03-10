@@ -6,15 +6,6 @@
     "/opt/homebrew/bin"
   ];
 
-  # Make yabai run "sudo" without password.
-  # Necessary for script injection.
-  environment.etc."sudoers.d/yabai" = {
-    enable = true;
-    text = ''
-      ar3s3ru ALL = (root) NOPASSWD: /opt/homebrew/bin/yabai --load-sa
-    '';
-  };
-
   homebrew = {
     enable = true;
 
@@ -25,8 +16,6 @@
     };
 
     brews = [
-      "yabai"
-      "skhd"
       "podman"
     ];
 
@@ -34,11 +23,6 @@
       "dbeaver-community"
       "whatsapp"
       "stats"
-    ];
-
-    taps = [
-      "cmacrae/formulae" # spacebar
-      "koekeishiya/formulae" # yabai
     ];
   };
 }

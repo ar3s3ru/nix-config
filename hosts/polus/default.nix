@@ -15,9 +15,9 @@ darwin.lib.darwinSystem {
     ../modules/nix-unstable.nix
     ../modules/nixpkgs.nix
     ../modules/fish.nix
+    ../modules/aerospace.nix
     ./configuration.nix
     ./homebrew.nix
-    ./aerospace.nix
     ./java.nix
     {
       home-manager.useGlobalPkgs = true;
