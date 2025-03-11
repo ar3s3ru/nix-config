@@ -1,5 +1,31 @@
 { lib, ... }:
+let
+  workspaces = {
+    "0" = "slack";
+    "1" = "term";
+    "2" = "www";
+    "3" = "code";
+    "4" = "ide";
+    "5" = "chat";
+    "6" = "www-2";
+    "7" = "7";
+    "8" = "8";
+    "9" = "9";
+  };
 
+  workspace-monitor-assignments = {
+    "code" = "secondary";
+    "ide" = "secondary";
+    "www-2" = "secondary";
+  };
+
+  app-monitors-assignments = {
+    "com.tinyspeck.slackmacgap" = "slack";
+    "com.tdesktop.Telegram" = "chat";
+    "net.whatsapp.WhatsApp" = "chat";
+    "org.mozilla.firefox" = "www";
+  };
+in
 {
   services.aerospace.enable = true;
   services.aerospace.settings = {
@@ -25,6 +51,16 @@
       inner.horizontal = 10;
       inner.vertical = 10;
     };
+
+    workspace-to-monitor-force-assignment = workspace-monitor-assignments;
+
+    on-window-detected = lib.attrsets.foldlAttrs
+      (acc: app-id: workspace: acc ++ [{
+        "if".app-id = app-id;
+        run = "move-node-to-workspace ${workspace}";
+      }])
+      [ ]
+      app-monitors-assignments;
 
     mode.main.binding =
       let
@@ -53,12 +89,13 @@
         "${mod}-shift-${right}" = "move right";
 
         "${mod}-c" = "reload-config";
-      } // lib.lists.foldl
-        (acc: n: acc // {
-          "${mod}-${n}" = "workspace ${n}";
-          "${mod}-shift-${n}" = "move-node-to-workspace ${n}";
+      } // lib.attrsets.foldlAttrs
+        (acc: num: name: acc // {
+          "${mod}-${num}" = "workspace ${name}";
+          "${mod}-shift-${num}" = "move-node-to-workspace ${name}";
         })
         { }
-        (map toString (lib.range 0 9));
+        workspaces;
   };
 }
+
