@@ -56,6 +56,9 @@
 
     lvs.media = {
       size = "+100%FREE";
+      content.type = "filesystem";
+      content.format = "ext4";
+      content.mountpoint = "/media";
     };
   };
 }
