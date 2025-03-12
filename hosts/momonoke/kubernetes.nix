@@ -35,9 +35,18 @@ in
       - "eviction-hard=memory.available<500Mi,nodefs.available<1Gi"
   '';
 
-  # Allow ingress traffic to Traefik on Kubernetes.
-  networking.firewall.allowedTCPPorts = [ 80 443 2379 2380 6443 ];
-  networking.firewall.allowedUDPPorts = [ 8472 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443 # k8s traefik ingress
+    2379
+    2380 # k3s etcd cluster coordination
+    6443 # k8s apiserver
+    8123 # home-assistant hostNetwork
+  ];
+
+  networking.firewall.allowedUDPPorts = [
+    8472 # k3s flannel
+  ];
 
   # Kubernetes through K3S.
   services.k3s = {
