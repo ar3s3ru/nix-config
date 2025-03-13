@@ -7,6 +7,7 @@
     "--ssh"
     "--accept-dns"
     "--accept-risk=all"
+    "--advertise-routes=192.168.2.0/24"
     "--advertise-exit-node"
     "--hostname=eq14-001"
   ];

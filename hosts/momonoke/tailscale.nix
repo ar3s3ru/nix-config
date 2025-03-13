@@ -10,7 +10,7 @@
     "--accept-dns"
     "--accept-risk=all"
     "--advertise-exit-node"
-    "--advertise-routes=192.168.2.0/24" # To access the local router.
+    "--advertise-routes=192.168.2.0/24"
     "--hostname=momonoke.ar3s3ru.dev"
   ];
 }
