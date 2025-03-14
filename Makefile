@@ -29,20 +29,6 @@ bootstrap/system:
 		--debug \
 		--disk-encryption-keys /tmp/cryptroot.key ./hosts/${host}/secrets/cryptroot.key
 
-# Remote run ------------------------------------------------------------------
-
-host/deploy:
-	echo "==> copying the configuration to host '$(host)' on '$(hostname)'"
-	$(MAKE) bootstrap/copy user=$(user) hostname=$(hostname)
-	echo "==> initiating system configuration switch"
-	ssh ${or $(user), root}@$(hostname) 'cd nix-config && make nixos host=$(host)'
-
-host/dejima.ar3s3ru.dev:
-	$(MAKE) host/deploy host=dejima user=root hostname=dejima-ar3s3ru-dev.tail2ff90.ts.net
-
-host/momonoke.ar3s3ru.dev:
-	$(MAKE) host/deploy host=momonoke user=$(user) hostname=momonoke-ar3s3ru-dev.tail2ff90.ts.net
-
 # Local run -------------------------------------------------------------------
 
 nixos:
@@ -53,9 +39,6 @@ darwin:
 	echo "switching to new version..."
 	./result/sw/bin/darwin-rebuild switch --flake .
 	echo "all done!"
-
-system/momonoke:
-	$(MAKE) nixos host=momonoke
 
 system/teriyaki:
 	$(MAKE) darwin host=teriyaki
